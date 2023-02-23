@@ -165,7 +165,6 @@ namespace PokemonGBMP
             // 
             // SocketTimer
             // 
-            this.SocketTimer.Enabled = true;
             this.SocketTimer.Tick += new System.EventHandler(this.SocketTimer_Tick);
             // 
             // label1

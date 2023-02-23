@@ -12,67 +12,43 @@ namespace PokemonGBMP
 {
     public partial class MainForm
     {
-        public void BackGroundWorker()
-        {
-            // Inicializar el objeto BackgroundWorker
-            backgroundWorker = new BackgroundWorker();
-            if (isHost)
-                backgroundWorker.DoWork += new DoWorkEventHandler(Host);
-            else
-                backgroundWorker.DoWork += new DoWorkEventHandler(Client);
 
-            // Iniciar el BackgroundWorker
-            backgroundWorker.RunWorkerAsync();
-        }
-
-
-        public void Client(object sender, DoWorkEventArgs e)
+        public void Client()
         {
             client = new TcpClient();
             client.Connect("127.0.0.1", 12345);
-            stream = client.GetStream();
             isConnected = true;
-            Listen();
+            SocketTimer.Enabled = true;
         }
 
 
-        public void Host(object sender, DoWorkEventArgs e)
+        public void Host()
         {
             host = new TcpListener(IPAddress.Any, 12345);
             host.Start();
 
             client = host.AcceptTcpClient();
-            while (stream == null)
-                stream = client.GetStream();
             isConnected = true;
-            Listen();
+            SocketTimer.Enabled = true;
+        }
+
+        private void ReadSocket(string socket)
+        {
+            secondaryRelXPos = int.Parse(socket);
         }
 
 
         private void Listen()
         {
-            while (true)
-            {
-                byte[] buffer = new byte[1024];
+            stream = client.GetStream();
 
-                int bytes = stream.Read(buffer, 0, buffer.Length);
+            byte[] buffer = new byte[1024];
 
-                string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
+            int bytes = stream.Read(buffer, 0, buffer.Length);
 
-                secondaryRelXPos = Int32.Parse(msg);
+            string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
 
-                if (label1.InvokeRequired)
-                {
-                    label1.Invoke((MethodInvoker)delegate
-                    {
-                        label1.Text = msg;
-                    });
-                }
-                else
-                {
-                    label1.Text = msg;
-                }
-            }
+            ReadSocket(msg);
 
         }
 
@@ -81,6 +57,12 @@ namespace PokemonGBMP
             byte[] buffer = Encoding.ASCII.GetBytes(msg);
             stream.Write(buffer, 0, buffer.Length);
 
+        }
+
+        private void SocketTimer_Tick(object sender, EventArgs e)
+        {
+            Listen();
+            SendSocket(mainXPos.ToString());
         }
     }
 }

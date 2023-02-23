@@ -35,7 +35,7 @@ namespace PokemonGBMP
             public int[] mainPkmBox = new int[20];
 
         //Player two (Client)
-            public int secondaryRelXPos, secondaryRelYPos;
+            public volatile int secondaryRelXPos, secondaryRelYPos;
 
 
         TcpListener host;
@@ -48,7 +48,7 @@ namespace PokemonGBMP
         public MainForm()
         {
             InitializeComponent();
-            mem.OpenProcess(27752); //27752 14328
+            mem.OpenProcess("visualboyadvance-m.exe");
         }
 
 
@@ -59,7 +59,7 @@ namespace PokemonGBMP
             startPannel.Hide();
             mainPanel.Show();
             userStateTxt.Text = "Client";
-            BackGroundWorker();
+            Client();
         }
 
 
@@ -69,7 +69,7 @@ namespace PokemonGBMP
             isHost = true;
             mainPanel.Show();
             userStateTxt.Text = "Host";
-            BackGroundWorker();
+            Host();
         }
 
 
@@ -119,10 +119,6 @@ namespace PokemonGBMP
             ScanMainValues();
             WriteSecondaryValues();
 
-            if (isConnected)
-            {
-                SendSocket(mainXPos.ToString());
-            }
 
         }
 
@@ -131,17 +127,15 @@ namespace PokemonGBMP
  
         }
 
+
+
         private void TradeBtm_Click(object sender, EventArgs e)
         {
             Box box = new Box();
             box.Show();
         }
 
-        private void SocketTimer_Tick(object sender, EventArgs e)
-        {
-            //if(!startPannel.Visible)
-                //Listen();
-        }
+
 
         private void debugBtm_Click(object sender, EventArgs e)
             {
