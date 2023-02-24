@@ -50,9 +50,9 @@ namespace PokemonGBMP
             else if(socket.StartsWith("T"))
             {
                 string[] trade;
-                trade = socket.Replace("T", "").Split(';');
+                trade = socket.Remove(0, 1).Split(';');
                 box.secSlctPkmText.Text = trade[0];
-                box.secReadCheckBox.Checked = trade[1] == "true";
+                box.secReadCheckBox.Checked = bool.Parse(trade[1]);
             }
         }
 

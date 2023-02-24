@@ -61,5 +61,9 @@ namespace PokemonGBMP
             PkmBtm20.Text = pokemonList[main.mainPkmBox[19]].ToString();
         }
 
+        private void readyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            main.SendSocket("T" + slctPkmText.Text + ";" + readyCheckBox.Checked);
+        }
     }
 }

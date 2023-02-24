@@ -105,6 +105,7 @@ namespace PokemonGBMP
             this.readyCheckBox.TabIndex = 7;
             this.readyCheckBox.Text = "Ready";
             this.readyCheckBox.UseVisualStyleBackColor = true;
+            this.readyCheckBox.CheckedChanged += new System.EventHandler(this.readyCheckBox_CheckedChanged);
             // 
             // PkmBtm4
             // 
