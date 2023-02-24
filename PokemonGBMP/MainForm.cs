@@ -80,8 +80,8 @@ namespace PokemonGBMP
 
         public void CalculateRelativePosition()
         {
-            secondaryRelXPos = 40 + ((secondaryAbsXPos - mainXPos) * 10);
-            secondaryRelYPos = 40 + ((secondaryAbsYPos - mainYPos) * 10);
+            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0xF);
+            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0xF);
         }
 
 
@@ -125,25 +125,24 @@ namespace PokemonGBMP
             {
                 //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
+                //mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
 
                 //if the second player is inside the main player camera, update his position, else hide it
-                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 0x60)
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
+                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 140)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString("X"));
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
-                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 0x60)
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
+                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 120)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString("X"));
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
                 //Animation stuffs
 
-
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString());
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F7", "byte", secondaryIntraAnimationFrameCounter.ToString());
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F8", "byte", secondaryAnimationFrameCounter.ToString());
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F9", "byte", secondaryFaceDir.ToString());
+                
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString("X"));
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F7", "byte", secondaryIntraAnimationFrameCounter.ToString("X"));
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F8", "byte", secondaryAnimationFrameCounter.ToString("X"));
 
 
 
@@ -158,7 +157,6 @@ namespace PokemonGBMP
             ScanMainValues();
             WriteSecondaryValues();
 
-            label1.Text = secondaryRelXPos.ToString();
         }
 
         private void combatBtm_Click(object sender, EventArgs e)

@@ -43,7 +43,6 @@ namespace PokemonGBMP
             this.userStateTxt = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.SocketTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.startPannel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -168,21 +167,11 @@ namespace PokemonGBMP
             // 
             this.SocketTimer.Tick += new System.EventHandler(this.SocketTimer_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 378);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.startPannel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -194,7 +183,6 @@ namespace PokemonGBMP
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -213,7 +201,6 @@ namespace PokemonGBMP
         private System.Windows.Forms.Button combatBtm;
         private System.Windows.Forms.Button debugBtm;
         private System.Windows.Forms.Timer SocketTimer;
-        private System.Windows.Forms.Label label1;
     }
 }
 
