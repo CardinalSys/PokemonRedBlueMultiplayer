@@ -34,7 +34,6 @@ namespace PokemonGBMP
             this.playerOneInfo = new System.Windows.Forms.Label();
             this.mainPosText = new System.Windows.Forms.Label();
             this.updateInfoTimer = new System.Windows.Forms.Timer(this.components);
-            this.mainFaceDirText = new System.Windows.Forms.Label();
             this.mainAnimationText = new System.Windows.Forms.Label();
             this.mainOnGrassText = new System.Windows.Forms.Label();
             this.mainMapIdText = new System.Windows.Forms.Label();
@@ -77,19 +76,10 @@ namespace PokemonGBMP
             this.updateInfoTimer.Enabled = true;
             this.updateInfoTimer.Tick += new System.EventHandler(this.updateInfoTimer_Tick);
             // 
-            // mainFaceDirText
-            // 
-            this.mainFaceDirText.AutoSize = true;
-            this.mainFaceDirText.Location = new System.Drawing.Point(14, 143);
-            this.mainFaceDirText.Name = "mainFaceDirText";
-            this.mainFaceDirText.Size = new System.Drawing.Size(82, 13);
-            this.mainFaceDirText.TabIndex = 3;
-            this.mainFaceDirText.Text = "Face Direction: ";
-            // 
             // mainAnimationText
             // 
             this.mainAnimationText.AutoSize = true;
-            this.mainAnimationText.Location = new System.Drawing.Point(14, 166);
+            this.mainAnimationText.Location = new System.Drawing.Point(14, 144);
             this.mainAnimationText.Name = "mainAnimationText";
             this.mainAnimationText.Size = new System.Drawing.Size(112, 13);
             this.mainAnimationText.TabIndex = 4;
@@ -98,7 +88,7 @@ namespace PokemonGBMP
             // mainOnGrassText
             // 
             this.mainOnGrassText.AutoSize = true;
-            this.mainOnGrassText.Location = new System.Drawing.Point(14, 190);
+            this.mainOnGrassText.Location = new System.Drawing.Point(14, 169);
             this.mainOnGrassText.Name = "mainOnGrassText";
             this.mainOnGrassText.Size = new System.Drawing.Size(57, 13);
             this.mainOnGrassText.TabIndex = 5;
@@ -107,7 +97,7 @@ namespace PokemonGBMP
             // mainMapIdText
             // 
             this.mainMapIdText.AutoSize = true;
-            this.mainMapIdText.Location = new System.Drawing.Point(14, 213);
+            this.mainMapIdText.Location = new System.Drawing.Point(14, 191);
             this.mainMapIdText.Name = "mainMapIdText";
             this.mainMapIdText.Size = new System.Drawing.Size(82, 13);
             this.mainMapIdText.TabIndex = 6;
@@ -116,7 +106,7 @@ namespace PokemonGBMP
             // mainOnCombatText
             // 
             this.mainOnCombatText.AutoSize = true;
-            this.mainOnCombatText.Location = new System.Drawing.Point(14, 236);
+            this.mainOnCombatText.Location = new System.Drawing.Point(14, 213);
             this.mainOnCombatText.Name = "mainOnCombatText";
             this.mainOnCombatText.Size = new System.Drawing.Size(66, 13);
             this.mainOnCombatText.TabIndex = 7;
@@ -152,7 +142,6 @@ namespace PokemonGBMP
             this.Controls.Add(this.mainMapIdText);
             this.Controls.Add(this.mainOnGrassText);
             this.Controls.Add(this.mainAnimationText);
-            this.Controls.Add(this.mainFaceDirText);
             this.Controls.Add(this.mainPosText);
             this.Controls.Add(this.playerOneInfo);
             this.Controls.Add(this.debugInfoLabel);
@@ -171,7 +160,6 @@ namespace PokemonGBMP
         private System.Windows.Forms.Label playerOneInfo;
         private System.Windows.Forms.Label mainPosText;
         private System.Windows.Forms.Timer updateInfoTimer;
-        private System.Windows.Forms.Label mainFaceDirText;
         private System.Windows.Forms.Label mainAnimationText;
         private System.Windows.Forms.Label mainOnGrassText;
         private System.Windows.Forms.Label mainMapIdText;

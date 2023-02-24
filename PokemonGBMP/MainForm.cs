@@ -24,12 +24,9 @@ namespace PokemonGBMP
 
         //Player one (main)
             public int mainXPos, mainYPos;
-            public int mainFaceDir;
 
         //Animation stuff
             public int mainSpriteImageIndex;
-            public int mainIntraAnimationFrameCounter;
-            public int mainAnimationFrameCounter;
 
             public int mainIsOnGrass; //128 if is true, else 0
             public int mainMapID;
@@ -42,11 +39,8 @@ namespace PokemonGBMP
             public int secondaryAbsXPos, secondaryAbsYPos;
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
-            public int secondaryFaceDir;
 
             public int secondarySpriteImageIndex;
-            public int secondaryIntraAnimationFrameCounter;
-            public int secondaryAnimationFrameCounter;
 
 
         public bool isConnected;
@@ -80,8 +74,8 @@ namespace PokemonGBMP
 
         public void CalculateRelativePosition()
         {
-            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0xF);
-            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0xF);
+            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0x10);
+            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0x10);
         }
 
 
@@ -103,10 +97,6 @@ namespace PokemonGBMP
             mainXPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,362");
 
             mainSpriteImageIndex = mem.ReadByte("visualboyadvance-m.exe+039602E0,102");
-            mainAnimationFrameCounter = mem.ReadByte("visualboyadvance-m.exe+039602E0,107");
-            mainIntraAnimationFrameCounter = mem.ReadByte("visualboyadvance-m.exe+039602E0,108");
-
-            mainFaceDir = mem.ReadByte("visualboyadvance-m.exe+039602E0,109");
 
             mainIsOnGrass = mem.ReadByte("visualboyadvance-m.exe+039602E0,207");
 
@@ -137,14 +127,8 @@ namespace PokemonGBMP
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
-                //Animation stuffs
-
-                
+                //Animation          
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString("X"));
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F7", "byte", secondaryIntraAnimationFrameCounter.ToString("X"));
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F8", "byte", secondaryAnimationFrameCounter.ToString("X"));
-
-
 
             }
             else

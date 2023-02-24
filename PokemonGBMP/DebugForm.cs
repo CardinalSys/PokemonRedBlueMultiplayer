@@ -23,25 +23,8 @@ namespace PokemonGBMP
         private void updateInfoTimer_Tick(object sender, EventArgs e)
         {
             mainPosText.Text = "Position: " + main.mainXPos + ";" + main.mainYPos;
-            switch (main.mainFaceDir)
-            {
-                case 0:
-                    mainDir = "Down";
-                    break;
-                case 4:
-                    mainDir = "Up";
-                    break;
-                case 8:
-                    mainDir = "Left";
-                    break;
-                case 12:
-                    mainDir = "Right";
-                    break;
-            }
 
-            mainFaceDirText.Text = "Face Direction: " + mainDir;
-
-            mainAnimationText.Text = "Odd Animation Stuffs: " + main.mainSpriteImageIndex + "/" + main.mainIntraAnimationFrameCounter + "/" + main.mainAnimationFrameCounter;
+            mainAnimationText.Text = "Animation index: " + main.mainSpriteImageIndex;
 
             if(main.mainIsOnGrass == 0)
                 mainOnGrassText.Text = "Is on grass: False";

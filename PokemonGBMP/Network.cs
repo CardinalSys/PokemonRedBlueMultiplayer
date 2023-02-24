@@ -45,9 +45,6 @@ namespace PokemonGBMP
                 secondaryAbsYPos = int.Parse(pos[1]);
                 secondaryMapId = int.Parse(pos[2]);
                 secondarySpriteImageIndex = int.Parse(pos[3]);
-                secondaryIntraAnimationFrameCounter = int.Parse(pos[4]);
-                secondaryAnimationFrameCounter = int.Parse(pos[5]);
-                secondaryFaceDir = int.Parse(pos[6]);
                 CalculateRelativePosition();
             }
         }
@@ -77,9 +74,7 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" +
-                mainIntraAnimationFrameCounter + ";" + mainAnimationFrameCounter + ";" + mainFaceDir
-                );
+            SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";");
         }
     }
 }
