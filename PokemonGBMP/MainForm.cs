@@ -30,6 +30,8 @@ namespace PokemonGBMP
             public int mainSpriteImageIndex;
             public int mainIntraAnimationFrameCounter;
             public int mainAnimationFrameCounter;
+            public int mainWalkAnimationCounter;
+
             public int mainIsOnGrass; //128 if is true, else 0
             public int mainMapID;
             public int mainBadgets;
