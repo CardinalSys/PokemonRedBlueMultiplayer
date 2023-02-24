@@ -39,21 +39,36 @@ namespace PokemonGBMP
         {
             if(socket.StartsWith("X"))
             {
+                //Movement
                 string[] mov;
-                mov = socket.Replace("X", "").Split(';');
+                mov = socket.Replace("X", "").Split('T')[0].Split(';');
                 secondaryAbsXPos = int.Parse(mov[0]);
                 secondaryAbsYPos = int.Parse(mov[1]);
                 secondaryMapId = int.Parse(mov[2]);
                 secondarySpriteImageIndex = int.Parse(mov[3]);
                 CalculateRelativePosition();
-            }
-            else if(socket.StartsWith("T"))
-            {
+
+                //Trade
                 string[] trade;
-                trade = socket.Remove(0, 1).Split(';');
-                box.secSlctPkmText.Text = trade[0];
-                box.secReadCheckBox.Checked = bool.Parse(trade[1]);
+                try
+                {
+                    trade = socket.Split('T')[1].Split(';');
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message + "/Error: " + socket.Split('T')[0]);
+                }
+                /*box.secSlctPkmText.Text = trade[0];
+                try
+                {
+                    box.secReadCheckBox.Checked = bool.Parse(trade[1]);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message + "/Error: " + trade[1]);
+                }*/
             }
+
         }
 
 
@@ -81,7 +96,12 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";");
+            if(box != null)
+                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "T" + box.slctPkmText.Text + "; " + box.readyCheckBox.Checked);
+            else
+                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "T" + "null" + "; " + "false");
+
+
         }
     }
 }

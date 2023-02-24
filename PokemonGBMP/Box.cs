@@ -30,7 +30,6 @@ namespace PokemonGBMP
         {
             Button btn = (Button)sender;
             slctPkmText.Text = btn.Text;
-            main.SendSocket("T" + slctPkmText.Text + ";" + readyCheckBox.Checked);
         }
 
 
@@ -63,7 +62,7 @@ namespace PokemonGBMP
 
         private void readyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            main.SendSocket("T" + slctPkmText.Text + ";" + readyCheckBox.Checked);
+
         }
     }
 }
