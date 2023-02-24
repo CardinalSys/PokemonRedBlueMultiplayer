@@ -107,8 +107,8 @@ namespace PokemonGBMP
 
         private void WriteSecondaryValues()
         {
-            //mem.ReadByte("visualboyadvance-m.exe+039602E0,1F6");
             mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
+            mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
         }
 
         private void mainTimer_Tick(object sender, EventArgs e)
@@ -136,7 +136,7 @@ namespace PokemonGBMP
 
         private void debugBtm_Click(object sender, EventArgs e)
             {
-                DebugForm debug = new DebugForm();
+                DebugForm debug = new DebugForm(this);
                 debug.Show();
             }
         }

@@ -12,11 +12,12 @@ namespace PokemonGBMP
 {
     public partial class DebugForm : Form
     {
-        MainForm main = new MainForm();
+        MainForm main;
         private string mainDir;
-        public DebugForm()
+        public DebugForm(MainForm main)
         {
             InitializeComponent();
+            this.main = main; 
         }
 
         private void updateInfoTimer_Tick(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace PokemonGBMP
             else
                 mainOnCombatText.Text = "Is on combat: True";
 
-            secondaryPosText.Text = "Position: " + main.secondaryRelXPos;
+            secondaryPosText.Text = "Position: " + main.secondaryRelXPos + ";" + main.secondaryRelYPos;
         }
     }
 }

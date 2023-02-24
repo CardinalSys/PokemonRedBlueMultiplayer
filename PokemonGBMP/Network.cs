@@ -37,7 +37,13 @@ namespace PokemonGBMP
 
         private void ReadSocket(string socket)
         {
-            secondaryRelXPos = int.Parse(socket);
+            if(socket.StartsWith("X"))
+            {
+                string[] pos;
+                pos = socket.Replace("X", "").Split('Y');
+                secondaryRelXPos = int.Parse(pos[0]);
+                secondaryRelYPos = int.Parse(pos[1]);
+            }
         }
 
 
@@ -65,7 +71,7 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            SendSocket(mainXPos.ToString());
+            SendSocket("X" + mainXPos + "Y" + mainYPos);
         }
     }
 }
