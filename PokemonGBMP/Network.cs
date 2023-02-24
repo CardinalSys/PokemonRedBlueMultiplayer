@@ -40,9 +40,10 @@ namespace PokemonGBMP
             if(socket.StartsWith("X"))
             {
                 string[] pos;
-                pos = socket.Replace("X", "").Split('Y');
+                pos = socket.Replace("X", "").Split(';');
                 secondaryRelXPos = int.Parse(pos[0]);
                 secondaryRelYPos = int.Parse(pos[1]);
+                secondaryMapId = int.Parse(pos[2]);
             }
         }
 
@@ -71,7 +72,7 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            SendSocket("X" + mainXPos + "Y" + mainYPos);
+            SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID);
         }
     }
 }

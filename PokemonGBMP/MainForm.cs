@@ -18,6 +18,8 @@ namespace PokemonGBMP
 
         bool isHost = false;
 
+
+
         Mem mem = new Mem();
 
         //Player one (main)
@@ -36,6 +38,7 @@ namespace PokemonGBMP
 
         //Player two (Client)
             public int secondaryRelXPos, secondaryRelYPos;
+            public int secondaryMapId;
 
 
 
@@ -107,8 +110,15 @@ namespace PokemonGBMP
 
         private void WriteSecondaryValues()
         {
-            mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
-            mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
+
+            if(mainMapID == secondaryMapId)
+            {
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
+            }
+
         }
 
         private void mainTimer_Tick(object sender, EventArgs e)
