@@ -49,25 +49,19 @@ namespace PokemonGBMP
                 CalculateRelativePosition();
 
                 //Trade
-                string[] trade;
-                try
+                if(box != null)
                 {
-                    trade = socket.Split('T')[1].Split(';');
+                    string[] trade;
+
+                    trade = socket.Split('Y')[1].Split(';');
+
+                    box.secSlctPkmText.Text = trade[0];
+
+                    box.secReadCheckBox.Checked = trade[1] == "True";
+
                 }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message + "/Error: " + socket.Split('T')[0]);
-                }
-                /*box.secSlctPkmText.Text = trade[0];
-                try
-                {
-                    box.secReadCheckBox.Checked = bool.Parse(trade[1]);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message + "/Error: " + trade[1]);
-                }*/
             }
+
 
         }
 
@@ -97,9 +91,9 @@ namespace PokemonGBMP
         {
             Listen();
             if(box != null)
-                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "T" + box.slctPkmText.Text + "; " + box.readyCheckBox.Checked);
+                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
             else
-                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "T" + "null" + "; " + "false");
+                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + "; " + "false");
 
 
         }
