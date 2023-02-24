@@ -74,8 +74,8 @@ namespace PokemonGBMP
 
         public void CalculateRelativePosition()
         {
-            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0x10);
-            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0x10);
+            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0xF);
+            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0xF);
         }
 
 
