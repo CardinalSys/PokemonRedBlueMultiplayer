@@ -37,6 +37,7 @@ namespace PokemonGBMP
             public int[] mainPkmBox = new int[20];
 
         //Player two (Client)
+            public int secondaryAbsXPos, secondaryAbsYPos;
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
@@ -70,6 +71,12 @@ namespace PokemonGBMP
             mainPanel.Show();
             userStateTxt.Text = "Host";
             Host();
+        }
+
+        public void CalculateRelativePosition()
+        {
+            secondaryRelXPos = 40 + ((secondaryAbsXPos - mainXPos) * 10);
+            secondaryRelYPos = 40 + ((secondaryAbsYPos - mainYPos) * 10);
         }
 
 
@@ -113,10 +120,20 @@ namespace PokemonGBMP
 
             if(mainMapID == secondaryMapId)
             {
+                //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
+
+                //if the second player is inside the main player camera, update his position, else hide it
+                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 0x100)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
+                else
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
+                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 0x100)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
+                else
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
+
             }
 
         }

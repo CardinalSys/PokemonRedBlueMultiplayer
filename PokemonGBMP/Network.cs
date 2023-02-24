@@ -41,9 +41,10 @@ namespace PokemonGBMP
             {
                 string[] pos;
                 pos = socket.Replace("X", "").Split(';');
-                secondaryRelXPos = int.Parse(pos[0]);
-                secondaryRelYPos = int.Parse(pos[1]);
+                secondaryAbsXPos = int.Parse(pos[0]);
+                secondaryAbsYPos = int.Parse(pos[1]);
                 secondaryMapId = int.Parse(pos[2]);
+                CalculateRelativePosition();
             }
         }
 
