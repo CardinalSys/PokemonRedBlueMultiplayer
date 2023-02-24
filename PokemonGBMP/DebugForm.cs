@@ -13,7 +13,6 @@ namespace PokemonGBMP
     public partial class DebugForm : Form
     {
         MainForm main;
-        private string mainDir;
         public DebugForm(MainForm main)
         {
             InitializeComponent();
@@ -22,9 +21,11 @@ namespace PokemonGBMP
 
         private void updateInfoTimer_Tick(object sender, EventArgs e)
         {
+
+            //Main Player
             mainPosText.Text = "Position: " + main.mainXPos + ";" + main.mainYPos;
 
-            mainAnimationText.Text = "Animation index: " + main.mainSpriteImageIndex;
+            mainSpriteIndexText.Text = "Sprite index: " + main.mainSpriteImageIndex;
 
             if(main.mainIsOnGrass == 0)
                 mainOnGrassText.Text = "Is on grass: False";
@@ -39,7 +40,12 @@ namespace PokemonGBMP
             else
                 mainOnCombatText.Text = "Is on combat: True";
 
+            //Secondary Player
+            secondaryMapIdText.Text = "Current MapID: " + main.secondaryMapId;
+
             secondaryPosText.Text = "Position: " + main.secondaryRelXPos + ";" + main.secondaryRelYPos;
+
+            secondarySpriteIndex.Text = "Sprite index: " + main.secondarySpriteImageIndex;
         }
     }
 }

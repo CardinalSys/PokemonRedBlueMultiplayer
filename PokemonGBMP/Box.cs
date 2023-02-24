@@ -13,12 +13,13 @@ namespace PokemonGBMP
 {
     public partial class Box : Form
     {
-        MainForm main = new MainForm();
+        MainForm main;
 
         private List<string> pokemonList = new List<string>();
-        public Box()
+        public Box(MainForm main)
         {
             InitializeComponent();
+            this.main = main;
             StreamReader reader = new StreamReader("Pokemon.txt");
             pokemonList = reader.ReadToEnd().Split(',').ToList();
 
@@ -29,6 +30,7 @@ namespace PokemonGBMP
         {
             Button btn = (Button)sender;
             slctPkmText.Text = btn.Text;
+            main.SendSocket("T" + slctPkmText.Text + ";" + readyCheckBox.Checked);
         }
 
 

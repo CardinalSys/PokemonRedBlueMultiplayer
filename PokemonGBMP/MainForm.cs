@@ -18,7 +18,7 @@ namespace PokemonGBMP
 
         bool isHost = false;
 
-
+        Box box;
 
         Mem mem = new Mem();
 
@@ -152,7 +152,7 @@ namespace PokemonGBMP
 
         private void TradeBtm_Click(object sender, EventArgs e)
         {
-            Box box = new Box();
+            box = new Box(this);
             box.Show();
         }
 

@@ -39,13 +39,20 @@ namespace PokemonGBMP
         {
             if(socket.StartsWith("X"))
             {
-                string[] pos;
-                pos = socket.Replace("X", "").Split(';');
-                secondaryAbsXPos = int.Parse(pos[0]);
-                secondaryAbsYPos = int.Parse(pos[1]);
-                secondaryMapId = int.Parse(pos[2]);
-                secondarySpriteImageIndex = int.Parse(pos[3]);
+                string[] mov;
+                mov = socket.Replace("X", "").Split(';');
+                secondaryAbsXPos = int.Parse(mov[0]);
+                secondaryAbsYPos = int.Parse(mov[1]);
+                secondaryMapId = int.Parse(mov[2]);
+                secondarySpriteImageIndex = int.Parse(mov[3]);
                 CalculateRelativePosition();
+            }
+            else if(socket.StartsWith("T"))
+            {
+                string[] trade;
+                trade = socket.Replace("T", "").Split(';');
+                box.secSlctPkmText.Text = trade[0];
+                box.secReadCheckBox.Checked = trade[1] == "true";
             }
         }
 

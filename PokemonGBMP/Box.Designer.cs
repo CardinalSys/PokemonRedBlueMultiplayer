@@ -53,12 +53,14 @@ namespace PokemonGBMP
             this.PkmBtm18 = new System.Windows.Forms.Button();
             this.PkmBtm17 = new System.Windows.Forms.Button();
             this.ScanBox = new System.Windows.Forms.Timer(this.components);
+            this.secReadCheckBox = new System.Windows.Forms.CheckBox();
+            this.secSlctPkmText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // slctPkmText
             // 
             this.slctPkmText.AutoSize = true;
-            this.slctPkmText.Location = new System.Drawing.Point(182, 49);
+            this.slctPkmText.Location = new System.Drawing.Point(81, 68);
             this.slctPkmText.Name = "slctPkmText";
             this.slctPkmText.Size = new System.Drawing.Size(35, 13);
             this.slctPkmText.TabIndex = 0;
@@ -66,7 +68,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm1
             // 
-            this.PkmBtm1.Location = new System.Drawing.Point(12, 123);
+            this.PkmBtm1.Location = new System.Drawing.Point(10, 155);
             this.PkmBtm1.Name = "PkmBtm1";
             this.PkmBtm1.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm1.TabIndex = 4;
@@ -76,7 +78,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm2
             // 
-            this.PkmBtm2.Location = new System.Drawing.Point(109, 123);
+            this.PkmBtm2.Location = new System.Drawing.Point(107, 155);
             this.PkmBtm2.Name = "PkmBtm2";
             this.PkmBtm2.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm2.TabIndex = 5;
@@ -86,7 +88,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm3
             // 
-            this.PkmBtm3.Location = new System.Drawing.Point(210, 123);
+            this.PkmBtm3.Location = new System.Drawing.Point(208, 155);
             this.PkmBtm3.Name = "PkmBtm3";
             this.PkmBtm3.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm3.TabIndex = 6;
@@ -97,7 +99,7 @@ namespace PokemonGBMP
             // readyCheckBox
             // 
             this.readyCheckBox.AutoSize = true;
-            this.readyCheckBox.Location = new System.Drawing.Point(170, 85);
+            this.readyCheckBox.Location = new System.Drawing.Point(68, 101);
             this.readyCheckBox.Name = "readyCheckBox";
             this.readyCheckBox.Size = new System.Drawing.Size(57, 17);
             this.readyCheckBox.TabIndex = 7;
@@ -106,7 +108,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm4
             // 
-            this.PkmBtm4.Location = new System.Drawing.Point(309, 123);
+            this.PkmBtm4.Location = new System.Drawing.Point(307, 155);
             this.PkmBtm4.Name = "PkmBtm4";
             this.PkmBtm4.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm4.TabIndex = 8;
@@ -116,7 +118,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm8
             // 
-            this.PkmBtm8.Location = new System.Drawing.Point(309, 178);
+            this.PkmBtm8.Location = new System.Drawing.Point(307, 210);
             this.PkmBtm8.Name = "PkmBtm8";
             this.PkmBtm8.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm8.TabIndex = 12;
@@ -126,7 +128,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm7
             // 
-            this.PkmBtm7.Location = new System.Drawing.Point(210, 178);
+            this.PkmBtm7.Location = new System.Drawing.Point(208, 210);
             this.PkmBtm7.Name = "PkmBtm7";
             this.PkmBtm7.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm7.TabIndex = 11;
@@ -136,7 +138,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm6
             // 
-            this.PkmBtm6.Location = new System.Drawing.Point(109, 178);
+            this.PkmBtm6.Location = new System.Drawing.Point(107, 210);
             this.PkmBtm6.Name = "PkmBtm6";
             this.PkmBtm6.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm6.TabIndex = 10;
@@ -146,7 +148,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm5
             // 
-            this.PkmBtm5.Location = new System.Drawing.Point(12, 178);
+            this.PkmBtm5.Location = new System.Drawing.Point(10, 210);
             this.PkmBtm5.Name = "PkmBtm5";
             this.PkmBtm5.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm5.TabIndex = 9;
@@ -156,7 +158,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm12
             // 
-            this.PkmBtm12.Location = new System.Drawing.Point(309, 229);
+            this.PkmBtm12.Location = new System.Drawing.Point(307, 261);
             this.PkmBtm12.Name = "PkmBtm12";
             this.PkmBtm12.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm12.TabIndex = 16;
@@ -166,7 +168,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm11
             // 
-            this.PkmBtm11.Location = new System.Drawing.Point(210, 229);
+            this.PkmBtm11.Location = new System.Drawing.Point(208, 261);
             this.PkmBtm11.Name = "PkmBtm11";
             this.PkmBtm11.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm11.TabIndex = 15;
@@ -176,7 +178,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm10
             // 
-            this.PkmBtm10.Location = new System.Drawing.Point(109, 229);
+            this.PkmBtm10.Location = new System.Drawing.Point(107, 261);
             this.PkmBtm10.Name = "PkmBtm10";
             this.PkmBtm10.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm10.TabIndex = 14;
@@ -186,7 +188,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm9
             // 
-            this.PkmBtm9.Location = new System.Drawing.Point(12, 229);
+            this.PkmBtm9.Location = new System.Drawing.Point(10, 261);
             this.PkmBtm9.Name = "PkmBtm9";
             this.PkmBtm9.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm9.TabIndex = 13;
@@ -196,7 +198,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm16
             // 
-            this.PkmBtm16.Location = new System.Drawing.Point(309, 280);
+            this.PkmBtm16.Location = new System.Drawing.Point(307, 312);
             this.PkmBtm16.Name = "PkmBtm16";
             this.PkmBtm16.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm16.TabIndex = 20;
@@ -206,7 +208,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm15
             // 
-            this.PkmBtm15.Location = new System.Drawing.Point(210, 280);
+            this.PkmBtm15.Location = new System.Drawing.Point(208, 312);
             this.PkmBtm15.Name = "PkmBtm15";
             this.PkmBtm15.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm15.TabIndex = 19;
@@ -216,7 +218,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm14
             // 
-            this.PkmBtm14.Location = new System.Drawing.Point(109, 280);
+            this.PkmBtm14.Location = new System.Drawing.Point(107, 312);
             this.PkmBtm14.Name = "PkmBtm14";
             this.PkmBtm14.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm14.TabIndex = 18;
@@ -226,7 +228,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm13
             // 
-            this.PkmBtm13.Location = new System.Drawing.Point(12, 280);
+            this.PkmBtm13.Location = new System.Drawing.Point(10, 312);
             this.PkmBtm13.Name = "PkmBtm13";
             this.PkmBtm13.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm13.TabIndex = 17;
@@ -236,7 +238,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm20
             // 
-            this.PkmBtm20.Location = new System.Drawing.Point(309, 327);
+            this.PkmBtm20.Location = new System.Drawing.Point(307, 359);
             this.PkmBtm20.Name = "PkmBtm20";
             this.PkmBtm20.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm20.TabIndex = 24;
@@ -246,7 +248,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm19
             // 
-            this.PkmBtm19.Location = new System.Drawing.Point(210, 327);
+            this.PkmBtm19.Location = new System.Drawing.Point(208, 359);
             this.PkmBtm19.Name = "PkmBtm19";
             this.PkmBtm19.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm19.TabIndex = 23;
@@ -256,7 +258,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm18
             // 
-            this.PkmBtm18.Location = new System.Drawing.Point(109, 327);
+            this.PkmBtm18.Location = new System.Drawing.Point(107, 359);
             this.PkmBtm18.Name = "PkmBtm18";
             this.PkmBtm18.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm18.TabIndex = 22;
@@ -266,7 +268,7 @@ namespace PokemonGBMP
             // 
             // PkmBtm17
             // 
-            this.PkmBtm17.Location = new System.Drawing.Point(12, 327);
+            this.PkmBtm17.Location = new System.Drawing.Point(10, 359);
             this.PkmBtm17.Name = "PkmBtm17";
             this.PkmBtm17.Size = new System.Drawing.Size(75, 23);
             this.PkmBtm17.TabIndex = 21;
@@ -280,11 +282,33 @@ namespace PokemonGBMP
             this.ScanBox.Interval = 1000;
             this.ScanBox.Tick += new System.EventHandler(this.ScanBox_Tick);
             // 
+            // secReadCheckBox
+            // 
+            this.secReadCheckBox.AutoSize = true;
+            this.secReadCheckBox.Enabled = false;
+            this.secReadCheckBox.Location = new System.Drawing.Point(267, 101);
+            this.secReadCheckBox.Name = "secReadCheckBox";
+            this.secReadCheckBox.Size = new System.Drawing.Size(57, 17);
+            this.secReadCheckBox.TabIndex = 26;
+            this.secReadCheckBox.Text = "Ready";
+            this.secReadCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // secSlctPkmText
+            // 
+            this.secSlctPkmText.AutoSize = true;
+            this.secSlctPkmText.Location = new System.Drawing.Point(280, 68);
+            this.secSlctPkmText.Name = "secSlctPkmText";
+            this.secSlctPkmText.Size = new System.Drawing.Size(35, 13);
+            this.secSlctPkmText.TabIndex = 25;
+            this.secSlctPkmText.Text = "label1";
+            // 
             // Box
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 450);
+            this.Controls.Add(this.secReadCheckBox);
+            this.Controls.Add(this.secSlctPkmText);
             this.Controls.Add(this.PkmBtm20);
             this.Controls.Add(this.PkmBtm19);
             this.Controls.Add(this.PkmBtm18);
@@ -317,12 +341,9 @@ namespace PokemonGBMP
         }
 
         #endregion
-
-        private System.Windows.Forms.Label slctPkmText;
         private System.Windows.Forms.Button PkmBtm1;
         private System.Windows.Forms.Button PkmBtm2;
         private System.Windows.Forms.Button PkmBtm3;
-        private System.Windows.Forms.CheckBox readyCheckBox;
         private System.Windows.Forms.Button PkmBtm4;
         private System.Windows.Forms.Button PkmBtm8;
         private System.Windows.Forms.Button PkmBtm7;
@@ -341,5 +362,9 @@ namespace PokemonGBMP
         private System.Windows.Forms.Button PkmBtm18;
         private System.Windows.Forms.Button PkmBtm17;
         private System.Windows.Forms.Timer ScanBox;
+        public System.Windows.Forms.Label slctPkmText;
+        public System.Windows.Forms.CheckBox readyCheckBox;
+        public System.Windows.Forms.CheckBox secReadCheckBox;
+        public System.Windows.Forms.Label secSlctPkmText;
     }
 }
