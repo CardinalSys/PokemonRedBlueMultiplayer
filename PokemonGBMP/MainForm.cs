@@ -35,13 +35,10 @@ namespace PokemonGBMP
             public int[] mainPkmBox = new int[20];
 
         //Player two (Client)
-            public volatile int secondaryRelXPos, secondaryRelYPos;
+            public int secondaryRelXPos, secondaryRelYPos;
 
 
-        TcpListener host;
-        TcpClient client;
-        NetworkStream stream;
-        private BackgroundWorker backgroundWorker;
+
 
         public bool isConnected;
 
@@ -119,7 +116,7 @@ namespace PokemonGBMP
             ScanMainValues();
             WriteSecondaryValues();
 
-
+            label1.Text = secondaryRelXPos.ToString();
         }
 
         private void combatBtm_Click(object sender, EventArgs e)

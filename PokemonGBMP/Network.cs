@@ -12,22 +12,25 @@ namespace PokemonGBMP
 {
     public partial class MainForm
     {
+        TcpListener host;
+        TcpClient client;
+        NetworkStream stream;
 
         public void Client()
         {
             client = new TcpClient();
-            client.Connect("127.0.0.1", 12345);
+            client.ConnectAsync("192.168.1.106", 12345);
             isConnected = true;
             SocketTimer.Enabled = true;
         }
 
 
-        public void Host()
+        public async void Host()
         {
             host = new TcpListener(IPAddress.Any, 12345);
             host.Start();
 
-            client = host.AcceptTcpClient();
+            client = await host.AcceptTcpClientAsync();
             isConnected = true;
             SocketTimer.Enabled = true;
         }
@@ -38,13 +41,13 @@ namespace PokemonGBMP
         }
 
 
-        private void Listen()
+        private async void Listen()
         {
             stream = client.GetStream();
 
             byte[] buffer = new byte[1024];
 
-            int bytes = stream.Read(buffer, 0, buffer.Length);
+            int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
 
             string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
 
