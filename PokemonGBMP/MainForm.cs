@@ -41,7 +41,9 @@ namespace PokemonGBMP
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
-
+            public int secondarySpriteImageIndex;
+            public int secondaryIntraAnimationFrameCounter;
+            public int secondaryAnimationFrameCounter;
 
 
         public bool isConnected;
@@ -125,16 +127,23 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
 
                 //if the second player is inside the main player camera, update his position, else hide it
-                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 0x100)
+                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 0x60)
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString());
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
-                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 0x100)
+                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 0x60)
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString());
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
+                //Animation stuffs
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F7", "byte", secondaryIntraAnimationFrameCounter.ToString());
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F8", "byte", secondaryAnimationFrameCounter.ToString());
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString());
+
             }
+            else
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
         }
 
