@@ -26,6 +26,7 @@ namespace PokemonGBMP
             public int mainXPos, mainYPos;
             public int mainFaceDir;
             //Animation stuff
+            public int mainMovementStatus;
             public int mainSpriteImageIndex;
             public int mainIntraAnimationFrameCounter;
             public int mainAnimationFrameCounter;
@@ -41,6 +42,7 @@ namespace PokemonGBMP
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
+            public int secondaryMovementStatus;
             public int secondarySpriteImageIndex;
             public int secondaryIntraAnimationFrameCounter;
             public int secondaryAnimationFrameCounter;
@@ -104,6 +106,7 @@ namespace PokemonGBMP
 
             mainFaceDir = mem.ReadByte("visualboyadvance-m.exe+039602E0,109");
 
+            mainMovementStatus = mem.ReadByte("visualboyadvance-m.exe+039602E0,101");
             mainSpriteImageIndex = mem.ReadByte("visualboyadvance-m.exe+039602E0,102");
             mainIntraAnimationFrameCounter = mem.ReadByte("visualboyadvance-m.exe+039602E0,108");
             mainAnimationFrameCounter = mem.ReadByte("visualboyadvance-m.exe+039602E0,107");
@@ -137,6 +140,7 @@ namespace PokemonGBMP
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
                 //Animation stuffs
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,101", "byte", mainMovementStatus.ToString());
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F7", "byte", secondaryIntraAnimationFrameCounter.ToString());
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F8", "byte", secondaryAnimationFrameCounter.ToString());
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString());
