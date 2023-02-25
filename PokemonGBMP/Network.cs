@@ -65,12 +65,8 @@ namespace PokemonGBMP
             {
                 string recPkm = socket.Replace("T", "");
                 mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), Encoding.ASCII.GetBytes(recPkm));
-                
-            }
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), Encoding.ASCII.GetBytes(recPkm.Remove(2, recPkm.Length)));
 
-            if(onTrade)
-            {
-                MessageBox.Show(socket);
             }
         }
 
