@@ -67,7 +67,7 @@ namespace PokemonGBMP
             PkmBtm20.Text = pokemonList[main.mainPkmBox[19]].ToString();
 
 
-            if(readyCheckBox.Checked && secReadCheckBox.Checked && main.isHost)
+            if(readyCheckBox.Checked && secReadCheckBox.Checked)
             {
                 btnTrade.Enabled = true;
             }
@@ -82,11 +82,10 @@ namespace PokemonGBMP
 
         private void btnTrade_Click(object sender, EventArgs e)
         {
-
             main.onTrade = true;
             byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
-
-            main.SendSocket("T" + pkmToChange);
+            main.SendSocket("T" + BitConverter.ToString(pkmToChange));
+            MessageBox.Show("Waiting for the other player");
         }
 
         private void Box_FormClosing(object sender, FormClosingEventArgs e)

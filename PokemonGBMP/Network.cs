@@ -104,7 +104,7 @@ namespace PokemonGBMP
                 if (box != null)
                     SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
                 else
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + "; " + "false");
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + ";" + "false");
             }
 
 
