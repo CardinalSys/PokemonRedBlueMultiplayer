@@ -84,7 +84,7 @@ namespace PokemonGBMP
         {
             main.onTrade = true;
             byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
-            byte[] nickNamePkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0xA * slctPkmNum)).ToString("X"), 0XA);
+            byte[] nickNamePkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0x11 * slctPkmNum)).ToString("X"), 0x11);
             main.SendSocket("T" + BitConverter.ToString(pkmToChange) + ";" + BitConverter.ToString(nickNamePkmToChange));
             MessageBox.Show("Waiting for the other player");
         }

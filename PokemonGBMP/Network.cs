@@ -82,7 +82,7 @@ namespace PokemonGBMP
                 //Change ID
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), "byte", bytes[0].ToString("X"));
                 //Change NickName
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0xA * box.slctPkmNum)).ToString("X"), nnBytes);
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0x11 * box.slctPkmNum)).ToString("X"), nnBytes);
 
             }
         }
