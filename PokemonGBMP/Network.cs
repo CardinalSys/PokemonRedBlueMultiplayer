@@ -69,10 +69,9 @@ namespace PokemonGBMP
                 byte[] bytes = new byte[recPkm.Length];
                 for(int i = 0; i < bytes.Length; i++)
                 {
-                    MessageBox.Show(recPkm[i]);
                     bytes[i] = byte.Parse(recPkm[i], NumberStyles.HexNumber);
                 }
-                byte[] nnBytes = new byte[recPkm.Length];
+                byte[] nnBytes = new byte[nickName.Length];
                 for (int i = 0; i < nnBytes.Length; i++)
                 {
                     MessageBox.Show(nickName[i]);
@@ -83,7 +82,7 @@ namespace PokemonGBMP
                 //Change ID
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), "byte", bytes[0].ToString("X"));
                 //Change NickName
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (4 * box.slctPkmNum)).ToString("X"), nnBytes);
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0xA * box.slctPkmNum)).ToString("X"), nnBytes);
 
             }
         }
