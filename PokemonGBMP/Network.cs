@@ -63,10 +63,15 @@ namespace PokemonGBMP
             }
             else if(socket.StartsWith("T"))
             {
-                string recPkm = socket.Replace("T", "");
-                MessageBox.Show(recPkm);
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), Encoding.ASCII.GetBytes(recPkm));
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), Encoding.ASCII.GetBytes(recPkm.Remove(2, 31)));
+                string[] recPkm = socket.Replace("T", "").Split(' ');
+                byte[] bytes = new byte[recPkm.Length];
+                for(int i = 0; i < bytes.Length; i++)
+                {
+                    bytes[i] = byte.Parse(recPkm[i]);
+                }
+
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), bytes);
+                //mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), recPkm.Remove(2, 31)));
 
             }
         }
