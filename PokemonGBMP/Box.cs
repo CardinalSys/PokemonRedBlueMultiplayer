@@ -22,7 +22,6 @@ namespace PokemonGBMP
         {
             InitializeComponent();
             this.main = main;
-            main.onTrade = true;
             StreamReader reader = new StreamReader("Pokemon.txt");
             pokemonList = reader.ReadToEnd().Split(',').ToList();
 
@@ -37,7 +36,6 @@ namespace PokemonGBMP
             if (match.Success)
             {
                 slctPkmNum = int.Parse(match.Value) - 1;
-                MessageBox.Show(slctPkmNum.ToString());
             }
         }
 
@@ -85,6 +83,7 @@ namespace PokemonGBMP
         private void btnTrade_Click(object sender, EventArgs e)
         {
 
+            main.onTrade = true;
             byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
 
             main.SendSocket("T" + pkmToChange);

@@ -68,6 +68,10 @@ namespace PokemonGBMP
                 
             }
 
+            if(onTrade)
+            {
+                MessageBox.Show(socket);
+            }
         }
 
 
@@ -95,13 +99,15 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            if(!onTrade)
+            if (!onTrade)
             {
                 if (box != null)
                     SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
                 else
                     SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + "; " + "false");
             }
+
+
 
         }
     }
