@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -63,15 +64,26 @@ namespace PokemonGBMP
             }
             else if(socket.StartsWith("T"))
             {
-                string[] recPkm = socket.Replace("T", "").Split(' ');
+                string[] recPkm = socket.Replace("T", "").Split(';')[0].Split('-');
+                string[] nickName = socket.Replace("T", "").Split(';')[1].Split('-');
                 byte[] bytes = new byte[recPkm.Length];
                 for(int i = 0; i < bytes.Length; i++)
                 {
-                    bytes[i] = byte.Parse(recPkm[i]);
+                    MessageBox.Show(recPkm[i]);
+                    bytes[i] = byte.Parse(recPkm[i], NumberStyles.HexNumber);
                 }
-
+                byte[] nnBytes = new byte[recPkm.Length];
+                for (int i = 0; i < nnBytes.Length; i++)
+                {
+                    MessageBox.Show(nickName[i]);
+                    nnBytes[i] = byte.Parse(nickName[i], NumberStyles.HexNumber);
+                }
+                //Change stats
                 mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), bytes);
-                //mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), recPkm.Remove(2, 31)));
+                //Change ID
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), "byte", bytes[0].ToString("X"));
+                //Change NickName
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (4 * box.slctPkmNum)).ToString("X"), nnBytes);
 
             }
         }
