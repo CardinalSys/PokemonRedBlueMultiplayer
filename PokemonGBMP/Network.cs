@@ -37,7 +37,7 @@ namespace PokemonGBMP
 
         private void ReadSocket(string socket)
         {
-            if (socket.StartsWith("X"))
+            if(socket.StartsWith("X"))
             {
                 //Movement
                 string[] mov;
@@ -49,7 +49,7 @@ namespace PokemonGBMP
                 CalculateRelativePosition();
 
                 //Trade
-                if (box != null)
+                if(box != null)
                 {
                     string[] trade;
 
@@ -61,12 +61,12 @@ namespace PokemonGBMP
 
                 }
             }
-            else if (socket.StartsWith("T"))
+            else if(socket.StartsWith("T"))
             {
                 string recPkm = socket.Replace("T", "");
-
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), Convert.FromBase64String(recPkm));
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), Convert.FromBase64String(recPkm.Remove(2, 31)));
+                MessageBox.Show(recPkm);
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), Encoding.ASCII.GetBytes(recPkm));
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), Encoding.ASCII.GetBytes(recPkm.Remove(2, 31)));
 
             }
         }
