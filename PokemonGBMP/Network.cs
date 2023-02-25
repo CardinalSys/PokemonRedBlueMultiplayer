@@ -41,7 +41,7 @@ namespace PokemonGBMP
             {
                 //Movement
                 string[] mov;
-                mov = socket.Replace("X", "").Split('T')[0].Split(';');
+                mov = socket.Replace("X", "").Split('Y')[0].Split(';');
                 secondaryAbsXPos = int.Parse(mov[0]);
                 secondaryAbsYPos = int.Parse(mov[1]);
                 secondaryMapId = int.Parse(mov[2]);
@@ -61,7 +61,12 @@ namespace PokemonGBMP
 
                 }
             }
-
+            else if(socket.StartsWith("T"))
+            {
+                string recPkm = socket.Replace("T", "");
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * box.slctPkmNum)).ToString("X"), Encoding.ASCII.GetBytes(recPkm));
+                
+            }
 
         }
 
@@ -90,11 +95,13 @@ namespace PokemonGBMP
         private void SocketTimer_Tick(object sender, EventArgs e)
         {
             Listen();
-            if(box != null)
-                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
-            else
-                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + "; " + "false");
-
+            if(!onTrade)
+            {
+                if (box != null)
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
+                else
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + "; " + "false");
+            }
 
         }
     }

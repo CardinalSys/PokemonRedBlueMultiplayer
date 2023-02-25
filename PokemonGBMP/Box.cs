@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,12 +15,14 @@ namespace PokemonGBMP
     public partial class Box : Form
     {
         MainForm main;
+        public int slctPkmNum;
 
         private List<string> pokemonList = new List<string>();
         public Box(MainForm main)
         {
             InitializeComponent();
             this.main = main;
+            main.onTrade = true;
             StreamReader reader = new StreamReader("Pokemon.txt");
             pokemonList = reader.ReadToEnd().Split(',').ToList();
 
@@ -30,6 +33,12 @@ namespace PokemonGBMP
         {
             Button btn = (Button)sender;
             slctPkmText.Text = btn.Text;
+            Match match = Regex.Match(btn.Name, @"\d+");
+            if (match.Success)
+            {
+                slctPkmNum = int.Parse(match.Value) - 1;
+                MessageBox.Show(slctPkmNum.ToString());
+            }
         }
 
 
@@ -58,11 +67,32 @@ namespace PokemonGBMP
             PkmBtm18.Text = pokemonList[main.mainPkmBox[17]].ToString();
             PkmBtm19.Text = pokemonList[main.mainPkmBox[18]].ToString();
             PkmBtm20.Text = pokemonList[main.mainPkmBox[19]].ToString();
+
+
+            if(readyCheckBox.Checked && secReadCheckBox.Checked && main.isHost)
+            {
+                btnTrade.Enabled = true;
+            }
+            else
+                btnTrade.Enabled = false;
         }
 
         private void readyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTrade_Click(object sender, EventArgs e)
+        {
+
+            byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
+
+            main.SendSocket("T" + pkmToChange);
+        }
+
+        private void Box_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            main.onTrade = false;
         }
     }
 }

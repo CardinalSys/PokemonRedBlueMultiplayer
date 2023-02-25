@@ -16,11 +16,12 @@ namespace PokemonGBMP
     public partial class MainForm : Form
     {
 
-        bool isHost = false;
+        public bool isHost = false;
+        public bool onTrade = false;
 
         Box box;
 
-        Mem mem = new Mem();
+        public Mem mem = new Mem();
 
         //Player one (main)
             public int mainXPos, mainYPos;

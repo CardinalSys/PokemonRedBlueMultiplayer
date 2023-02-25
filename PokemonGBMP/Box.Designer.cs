@@ -55,6 +55,7 @@ namespace PokemonGBMP
             this.ScanBox = new System.Windows.Forms.Timer(this.components);
             this.secReadCheckBox = new System.Windows.Forms.CheckBox();
             this.secSlctPkmText = new System.Windows.Forms.Label();
+            this.btnTrade = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // slctPkmText
@@ -303,11 +304,22 @@ namespace PokemonGBMP
             this.secSlctPkmText.TabIndex = 25;
             this.secSlctPkmText.Text = "label1";
             // 
+            // btnTrade
+            // 
+            this.btnTrade.Location = new System.Drawing.Point(156, 82);
+            this.btnTrade.Name = "btnTrade";
+            this.btnTrade.Size = new System.Drawing.Size(75, 23);
+            this.btnTrade.TabIndex = 27;
+            this.btnTrade.Text = "Trade";
+            this.btnTrade.UseVisualStyleBackColor = true;
+            this.btnTrade.Click += new System.EventHandler(this.btnTrade_Click);
+            // 
             // Box
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 450);
+            this.Controls.Add(this.btnTrade);
             this.Controls.Add(this.secReadCheckBox);
             this.Controls.Add(this.secSlctPkmText);
             this.Controls.Add(this.PkmBtm20);
@@ -336,6 +348,7 @@ namespace PokemonGBMP
             this.MaximizeBox = false;
             this.Name = "Box";
             this.Text = "Box";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Box_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +380,6 @@ namespace PokemonGBMP
         public System.Windows.Forms.CheckBox readyCheckBox;
         public System.Windows.Forms.CheckBox secReadCheckBox;
         public System.Windows.Forms.Label secSlctPkmText;
+        private System.Windows.Forms.Button btnTrade;
     }
 }
