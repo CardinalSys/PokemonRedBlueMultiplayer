@@ -86,7 +86,6 @@ namespace PokemonGBMP
             byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
             byte[] nickNamePkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * slctPkmNum)).ToString("X"), 11);
             main.SendSocket("T" + BitConverter.ToString(pkmToChange) + ";" + BitConverter.ToString(nickNamePkmToChange));
-            MessageBox.Show("Trade Complete");
         }
 
         private void btnTrade_Click(object sender, EventArgs e)
