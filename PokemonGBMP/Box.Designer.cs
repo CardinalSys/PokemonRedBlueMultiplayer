@@ -380,6 +380,6 @@ namespace PokemonGBMP
         public System.Windows.Forms.CheckBox readyCheckBox;
         public System.Windows.Forms.CheckBox secReadCheckBox;
         public System.Windows.Forms.Label secSlctPkmText;
-        private System.Windows.Forms.Button btnTrade;
+        public System.Windows.Forms.Button btnTrade;
     }
 }

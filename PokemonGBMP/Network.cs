@@ -64,6 +64,7 @@ namespace PokemonGBMP
             }
             else if(socket.StartsWith("T"))
             {
+                box.StartTrade();
                 string[] recPkm = socket.Replace("T", "").Split(';')[0].Split('-');
                 string[] nickName = socket.Replace("T", "").Split(';')[1].Split('-');
                 byte[] bytes = new byte[recPkm.Length];
@@ -74,7 +75,6 @@ namespace PokemonGBMP
                 byte[] nnBytes = new byte[nickName.Length];
                 for (int i = 0; i < nnBytes.Length; i++)
                 {
-                    MessageBox.Show(nickName[i]);
                     nnBytes[i] = byte.Parse(nickName[i], NumberStyles.HexNumber);
                 }
                 //Change stats
@@ -82,7 +82,9 @@ namespace PokemonGBMP
                 //Change ID
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8," + (0xA81 + box.slctPkmNum).ToString("X"), "byte", bytes[0].ToString("X"));
                 //Change NickName
-                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (0x11 * box.slctPkmNum)).ToString("X"), nnBytes);
+                mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * box.slctPkmNum)).ToString("X"), nnBytes);
+
+                MessageBox.Show("Trade Complete");
 
             }
         }
