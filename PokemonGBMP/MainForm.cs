@@ -116,7 +116,6 @@ namespace PokemonGBMP
             {
                 //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
-                //mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", "00");
 
                 //if the second player is inside the main player camera, update his position, else hide it
                 if(secondaryRelXPos >= 0 && secondaryRelXPos <= 140)
@@ -146,7 +145,8 @@ namespace PokemonGBMP
 
         private void combatBtm_Click(object sender, EventArgs e)
         {
- 
+            Combat combat = new Combat(this);
+            combat.Show();
         }
 
 
