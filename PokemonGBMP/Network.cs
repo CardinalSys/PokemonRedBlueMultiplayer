@@ -84,7 +84,7 @@ namespace PokemonGBMP
                 //Change NickName
                 mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * box.slctPkmNum)).ToString("X"), nnBytes);
 
-                MessageBox.Show("Trade Complete");
+                
 
             }
         }

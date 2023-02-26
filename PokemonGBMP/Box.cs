@@ -82,10 +82,16 @@ namespace PokemonGBMP
 
         public void StartTrade()
         {
-            main.onTrade = true;
-            byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
-            byte[] nickNamePkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * slctPkmNum)).ToString("X"), 11);
-            main.SendSocket("T" + BitConverter.ToString(pkmToChange) + ";" + BitConverter.ToString(nickNamePkmToChange));
+            if(!main.onTrade)
+            {
+                main.onTrade = true;
+                byte[] pkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xA96 + (33 * slctPkmNum)).ToString("X"), 33);
+                byte[] nickNamePkmToChange = main.mem.ReadBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * slctPkmNum)).ToString("X"), 11);
+                main.SendSocket("T" + BitConverter.ToString(pkmToChange) + ";" + BitConverter.ToString(nickNamePkmToChange));
+                MessageBox.Show("Trade complete");
+                Close();
+            }
+
         }
 
         private void btnTrade_Click(object sender, EventArgs e)
