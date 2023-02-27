@@ -45,11 +45,12 @@ namespace PokemonGBMP
 
 
         public bool isConnected;
+        public bool procHooked;
 
         public MainForm()
         {
             InitializeComponent();
-            mem.OpenProcess("visualboyadvance-m.exe");
+
         }
 
 
@@ -57,20 +58,31 @@ namespace PokemonGBMP
 
         private void connectBtm_Click(object sender, EventArgs e)
         {
-            startPannel.Hide();
-            mainPanel.Show();
-            BackgroundImage = Properties.Resources.secondIMG;
-            Client();
+            if (procHooked)
+            {
+                startPannel.Hide();
+                mainPanel.Show();
+                BackgroundImage = Properties.Resources.secondIMG;
+                Client();
+            }
+            else
+                MessageBox.Show("Open the game before start");
         }
 
 
         private void hostBtm_Click(object sender, EventArgs e)
         {
-            startPannel.Hide();
-            isHost = true;
-            mainPanel.Show();
-            BackgroundImage = Properties.Resources.secondIMG;
-            Host();
+            if(procHooked)
+            {
+                startPannel.Hide();
+                isHost = true;
+                mainPanel.Show();
+                BackgroundImage = Properties.Resources.secondIMG;
+                Host();
+            }
+            else
+                MessageBox.Show("Open the game before start");
+
         }
 
         public void CalculateRelativePosition()
@@ -138,9 +150,14 @@ namespace PokemonGBMP
 
         private void mainTimer_Tick(object sender, EventArgs e)
         {
-            ScanMainValues();
-            WriteSecondaryValues();
-
+            if(mem.OpenProcess("visualboyadvance-m.exe"))
+            {
+                procHooked = true;
+                ScanMainValues();
+                WriteSecondaryValues();
+            }
+            else
+                procHooked = false;
         }
 
         private void combatBtm_Click(object sender, EventArgs e)
