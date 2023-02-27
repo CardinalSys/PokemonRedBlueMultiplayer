@@ -59,7 +59,7 @@ namespace PokemonGBMP
         {
             startPannel.Hide();
             mainPanel.Show();
-            userStateTxt.Text = "Client";
+            BackgroundImage = Properties.Resources.secondIMG;
             Client();
         }
 
@@ -69,7 +69,7 @@ namespace PokemonGBMP
             startPannel.Hide();
             isHost = true;
             mainPanel.Show();
-            userStateTxt.Text = "Host";
+            BackgroundImage = Properties.Resources.secondIMG;
             Host();
         }
 

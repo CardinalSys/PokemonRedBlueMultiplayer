@@ -28,15 +28,13 @@ namespace PokemonGBMP
             InitializeComponent();
             this.main = main;
             ExportTeamToText();
-            MessageBox.Show("1-Login clicking on choose name. \n2-Go to TeamBuilder, create new team and on format select Gen1 Ubers. \n3-Go to import from text and just paste a text with ctrol+v. \n4-Go back to home and select Find a user and put your friend username. \n5-Go to the top and select Ubers Gen 1, your team and click on challenge.");
+            MessageBox.Show("1-Login clicking on choose name. \n2-Go to TeamBuilder, create a new team and select Gen1 Ubers on format. \n3-Go to import from text and just paste a text with ctrol+v. \n4-Go back to home and select Find a user and put your friend username. \n5-Go to the top and select Ubers Gen 1, your team and click on challenge.");
         }
 
         private async void Test()
         {
-            // Obtener el botón por su ID
             string playBtn = await webView.CoreWebView2.ExecuteScriptAsync("document.getElementById('play-online').querySelector('a').click()");
 
-            // Hacer clic en el botón
             await webView.ExecuteScriptAsync(playBtn);
 
         }
@@ -82,6 +80,11 @@ namespace PokemonGBMP
         private void webView_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             Test();
+        }
+
+        private void Combat_Resize(object sender, EventArgs e)
+        {
+            webView.Size = this.Size;
         }
     }
 }

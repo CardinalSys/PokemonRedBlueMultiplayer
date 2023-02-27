@@ -49,9 +49,9 @@ namespace PokemonGBMP
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(238, 129);
+            this.richTextBox1.Location = new System.Drawing.Point(575, 129);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(351, 243);
+            this.richTextBox1.Size = new System.Drawing.Size(14, 18);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
@@ -65,6 +65,7 @@ namespace PokemonGBMP
             this.Controls.Add(this.webView);
             this.Name = "Combat";
             this.Text = "Combat";
+            this.Resize += new System.EventHandler(this.Combat_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.webView)).EndInit();
             this.ResumeLayout(false);
 

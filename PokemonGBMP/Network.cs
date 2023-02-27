@@ -20,7 +20,7 @@ namespace PokemonGBMP
         public void Client()
         {
             client = new TcpClient();
-            client.ConnectAsync("192.168.1.106", 12345);
+            client.ConnectAsync(ipInputBox.Text, 12345);
             isConnected = true;
             SocketTimer.Enabled = true;
         }

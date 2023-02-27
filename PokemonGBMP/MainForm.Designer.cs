@@ -32,88 +32,81 @@ namespace PokemonGBMP
             this.components = new System.ComponentModel.Container();
             this.connectBtm = new System.Windows.Forms.Button();
             this.hostBtm = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.serverIpLabel = new System.Windows.Forms.Label();
             this.startPannel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.debugBtm = new System.Windows.Forms.Button();
             this.mapBtm = new System.Windows.Forms.Button();
             this.TradeBtm = new System.Windows.Forms.Button();
             this.combatBtm = new System.Windows.Forms.Button();
-            this.userStateTxt = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.SocketTimer = new System.Windows.Forms.Timer(this.components);
+            this.ipInputBox = new System.Windows.Forms.TextBox();
             this.startPannel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // connectBtm
             // 
-            this.connectBtm.Location = new System.Drawing.Point(61, 240);
+            this.connectBtm.FlatAppearance.BorderSize = 0;
+            this.connectBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.connectBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.connectBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectBtm.Location = new System.Drawing.Point(198, 15);
             this.connectBtm.Name = "connectBtm";
             this.connectBtm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.connectBtm.Size = new System.Drawing.Size(108, 46);
+            this.connectBtm.Size = new System.Drawing.Size(140, 80);
             this.connectBtm.TabIndex = 0;
-            this.connectBtm.Text = "Connect";
             this.connectBtm.UseVisualStyleBackColor = true;
             this.connectBtm.Click += new System.EventHandler(this.connectBtm_Click);
             // 
             // hostBtm
             // 
-            this.hostBtm.Location = new System.Drawing.Point(61, 23);
+            this.hostBtm.FlatAppearance.BorderSize = 0;
+            this.hostBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.hostBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.hostBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hostBtm.ForeColor = System.Drawing.Color.Transparent;
+            this.hostBtm.Location = new System.Drawing.Point(25, 15);
             this.hostBtm.Name = "hostBtm";
-            this.hostBtm.Size = new System.Drawing.Size(108, 43);
+            this.hostBtm.Size = new System.Drawing.Size(158, 80);
             this.hostBtm.TabIndex = 1;
-            this.hostBtm.Text = "Host";
             this.hostBtm.UseVisualStyleBackColor = true;
             this.hostBtm.Click += new System.EventHandler(this.hostBtm_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(61, 197);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(108, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // serverIpLabel
-            // 
-            this.serverIpLabel.AutoSize = true;
-            this.serverIpLabel.Location = new System.Drawing.Point(91, 181);
-            this.serverIpLabel.Name = "serverIpLabel";
-            this.serverIpLabel.Size = new System.Drawing.Size(54, 13);
-            this.serverIpLabel.TabIndex = 4;
-            this.serverIpLabel.Text = "Server IP:";
-            // 
             // startPannel
             // 
+            this.startPannel.BackColor = System.Drawing.Color.Transparent;
+            this.startPannel.Controls.Add(this.ipInputBox);
             this.startPannel.Controls.Add(this.hostBtm);
-            this.startPannel.Controls.Add(this.textBox1);
-            this.startPannel.Controls.Add(this.serverIpLabel);
             this.startPannel.Controls.Add(this.connectBtm);
-            this.startPannel.Location = new System.Drawing.Point(89, 56);
+            this.startPannel.Location = new System.Drawing.Point(32, 56);
             this.startPannel.Name = "startPannel";
-            this.startPannel.Size = new System.Drawing.Size(248, 299);
+            this.startPannel.Size = new System.Drawing.Size(381, 299);
             this.startPannel.TabIndex = 5;
             // 
             // mainPanel
             // 
+            this.mainPanel.BackColor = System.Drawing.Color.Transparent;
             this.mainPanel.Controls.Add(this.debugBtm);
             this.mainPanel.Controls.Add(this.mapBtm);
             this.mainPanel.Controls.Add(this.TradeBtm);
             this.mainPanel.Controls.Add(this.combatBtm);
-            this.mainPanel.Controls.Add(this.userStateTxt);
-            this.mainPanel.Location = new System.Drawing.Point(60, 43);
+            this.mainPanel.Location = new System.Drawing.Point(32, 21);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(294, 299);
+            this.mainPanel.Size = new System.Drawing.Size(387, 345);
             this.mainPanel.TabIndex = 6;
             this.mainPanel.Visible = false;
             // 
             // debugBtm
             // 
-            this.debugBtm.Location = new System.Drawing.Point(252, 266);
+            this.debugBtm.FlatAppearance.BorderSize = 0;
+            this.debugBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.debugBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.debugBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.debugBtm.ForeColor = System.Drawing.Color.Transparent;
+            this.debugBtm.Location = new System.Drawing.Point(316, 308);
             this.debugBtm.Name = "debugBtm";
-            this.debugBtm.Size = new System.Drawing.Size(25, 23);
+            this.debugBtm.Size = new System.Drawing.Size(71, 37);
             this.debugBtm.TabIndex = 10;
             this.debugBtm.Text = "+";
             this.debugBtm.UseVisualStyleBackColor = true;
@@ -121,41 +114,44 @@ namespace PokemonGBMP
             // 
             // mapBtm
             // 
-            this.mapBtm.Location = new System.Drawing.Point(96, 258);
+            this.mapBtm.FlatAppearance.BorderSize = 0;
+            this.mapBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.mapBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.mapBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mapBtm.ForeColor = System.Drawing.Color.Transparent;
+            this.mapBtm.Location = new System.Drawing.Point(102, 155);
             this.mapBtm.Name = "mapBtm";
-            this.mapBtm.Size = new System.Drawing.Size(108, 38);
+            this.mapBtm.Size = new System.Drawing.Size(171, 59);
             this.mapBtm.TabIndex = 9;
-            this.mapBtm.Text = "Map";
             this.mapBtm.UseVisualStyleBackColor = true;
             // 
             // TradeBtm
             // 
-            this.TradeBtm.Location = new System.Drawing.Point(96, 185);
+            this.TradeBtm.FlatAppearance.BorderSize = 0;
+            this.TradeBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.TradeBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.TradeBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TradeBtm.ForeColor = System.Drawing.Color.Transparent;
+            this.TradeBtm.Location = new System.Drawing.Point(198, 49);
             this.TradeBtm.Name = "TradeBtm";
-            this.TradeBtm.Size = new System.Drawing.Size(108, 42);
+            this.TradeBtm.Size = new System.Drawing.Size(142, 77);
             this.TradeBtm.TabIndex = 8;
-            this.TradeBtm.Text = "Trade";
             this.TradeBtm.UseVisualStyleBackColor = true;
             this.TradeBtm.Click += new System.EventHandler(this.TradeBtm_Click);
             // 
             // combatBtm
             // 
-            this.combatBtm.Location = new System.Drawing.Point(96, 103);
+            this.combatBtm.FlatAppearance.BorderSize = 0;
+            this.combatBtm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.combatBtm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.combatBtm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combatBtm.ForeColor = System.Drawing.Color.Transparent;
+            this.combatBtm.Location = new System.Drawing.Point(44, 49);
             this.combatBtm.Name = "combatBtm";
-            this.combatBtm.Size = new System.Drawing.Size(108, 42);
+            this.combatBtm.Size = new System.Drawing.Size(130, 77);
             this.combatBtm.TabIndex = 7;
-            this.combatBtm.Text = "Combat";
             this.combatBtm.UseVisualStyleBackColor = true;
             this.combatBtm.Click += new System.EventHandler(this.combatBtm_Click);
-            // 
-            // userStateTxt
-            // 
-            this.userStateTxt.AutoSize = true;
-            this.userStateTxt.Location = new System.Drawing.Point(127, 23);
-            this.userStateTxt.Name = "userStateTxt";
-            this.userStateTxt.Size = new System.Drawing.Size(35, 13);
-            this.userStateTxt.TabIndex = 7;
-            this.userStateTxt.Text = "label2";
             // 
             // mainTimer
             // 
@@ -167,13 +163,27 @@ namespace PokemonGBMP
             // 
             this.SocketTimer.Tick += new System.EventHandler(this.SocketTimer_Tick);
             // 
+            // ipInputBox
+            // 
+            this.ipInputBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.ipInputBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipInputBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ipInputBox.Location = new System.Drawing.Point(143, 177);
+            this.ipInputBox.Name = "ipInputBox";
+            this.ipInputBox.Size = new System.Drawing.Size(100, 20);
+            this.ipInputBox.TabIndex = 11;
+            this.ipInputBox.Text = "127.0.0.1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 378);
+            this.BackgroundImage = global::PokemonGBMP.Properties.Resources.firstIMG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(438, 378);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.startPannel);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -181,7 +191,6 @@ namespace PokemonGBMP
             this.startPannel.ResumeLayout(false);
             this.startPannel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,17 +199,15 @@ namespace PokemonGBMP
 
         private System.Windows.Forms.Button connectBtm;
         private System.Windows.Forms.Button hostBtm;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label serverIpLabel;
         private System.Windows.Forms.Panel startPannel;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Label userStateTxt;
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Button mapBtm;
         private System.Windows.Forms.Button TradeBtm;
         private System.Windows.Forms.Button combatBtm;
         private System.Windows.Forms.Button debugBtm;
         private System.Windows.Forms.Timer SocketTimer;
+        private System.Windows.Forms.TextBox ipInputBox;
     }
 }
 
