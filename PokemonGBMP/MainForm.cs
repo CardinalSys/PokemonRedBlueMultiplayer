@@ -35,6 +35,7 @@ namespace PokemonGBMP
             public int mainIsOnCombat;
             //Box
             public int[] mainPkmBox = new int[20];
+            public byte[] mainNpcs = new byte[223]; 
 
         //Player two (Client)
             public int secondaryAbsXPos, secondaryAbsYPos;
@@ -42,6 +43,7 @@ namespace PokemonGBMP
             public int secondaryMapId;
 
             public int secondarySpriteImageIndex;
+            public byte[] secondaryNpcs = new byte[223];
 
 
         public bool isConnected;
@@ -52,9 +54,6 @@ namespace PokemonGBMP
             InitializeComponent();
 
         }
-
-
-
 
         private void connectBtm_Click(object sender, EventArgs e)
         {
@@ -113,12 +112,13 @@ namespace PokemonGBMP
 
             mainIsOnGrass = mem.ReadByte("visualboyadvance-m.exe+039602E0,207");
 
-
             mainMapID = mem.ReadByte("visualboyadvance-m.exe+039602E8,35E");
 
             mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
 
             mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
+
+            mainNpcs = mem.ReadBytes("visualboyadvance-m.exe+039602E0,110", mainNpcs.Length);
         }
 
         private void WriteSecondaryValues()
@@ -141,6 +141,11 @@ namespace PokemonGBMP
 
                 //Animation          
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString("X"));
+
+                if(!isHost)
+                {
+                    mem.WriteBytes("visualboyadvance-m.exe+039602E0,110", secondaryNpcs);
+                }
 
             }
             else
@@ -175,11 +180,10 @@ namespace PokemonGBMP
         }
 
 
-
         private void debugBtm_Click(object sender, EventArgs e)
-            {
-                DebugForm debug = new DebugForm(this);
-                debug.Show();
-            }
+        {
+            DebugForm debug = new DebugForm(this);
+            debug.Show();
         }
+    }
 }

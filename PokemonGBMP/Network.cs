@@ -47,6 +47,12 @@ namespace PokemonGBMP
                 secondaryAbsYPos = int.Parse(mov[1]);
                 secondaryMapId = int.Parse(mov[2]);
                 secondarySpriteImageIndex = int.Parse(mov[3]);
+
+                string[] npcs = mov[4].Split('-');
+                for (int i = 0; i < npcs.Length; i++)
+                {
+                    secondaryNpcs[i] = byte.Parse(npcs[i], NumberStyles.HexNumber);
+                }
                 CalculateRelativePosition();
 
                 //Trade
@@ -119,7 +125,7 @@ namespace PokemonGBMP
                 if (box != null)
                     SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
                 else
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + ";" + "false");
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + BitConverter.ToString(mainNpcs) + "Y" + "null" + ";" + "false");
             }
 
 
