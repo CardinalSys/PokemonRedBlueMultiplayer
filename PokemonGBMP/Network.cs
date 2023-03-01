@@ -47,6 +47,13 @@ namespace PokemonGBMP
                 secondaryAbsYPos = int.Parse(mov[1]);
                 secondaryMapId = int.Parse(mov[2]);
                 secondarySpriteImageIndex = int.Parse(mov[3]);
+                secondaryIsOnCombat = int.Parse(mov[4]);
+                secondaryIsOnGrass = int.Parse(mov[5]);
+                secondaryBadgets = int.Parse(mov[6]);
+                secondaryMewtwo = int.Parse(mov[7]);
+                secondaryArticuno = int.Parse(mov[8]);
+                secondaryMoltres = int.Parse(mov[9]);
+                secondaryZapdos = int.Parse(mov[10]);
                 CalculateRelativePosition();
 
                 //Trade
@@ -117,7 +124,9 @@ namespace PokemonGBMP
             if (!onTrade)
             {
                 if (box != null)
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + box.slctPkmText.Text + ";" + box.readyCheckBox.Checked);
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
+                        ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + "Y" + box.slctPkmText.Text
+                        + ";" + box.readyCheckBox.Checked);
                 else
                     SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + ";" + "false");
             }

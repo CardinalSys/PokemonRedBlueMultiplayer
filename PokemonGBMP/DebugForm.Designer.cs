@@ -42,6 +42,10 @@ namespace PokemonGBMP
             this.secondaryPosText = new System.Windows.Forms.Label();
             this.secondaryMapIdText = new System.Windows.Forms.Label();
             this.secondarySpriteIndex = new System.Windows.Forms.Label();
+            this.secOnGrassText = new System.Windows.Forms.Label();
+            this.secOnCombatText = new System.Windows.Forms.Label();
+            this.mainBadges = new System.Windows.Forms.Label();
+            this.secBadges = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // debugInfoLabel
@@ -151,11 +155,51 @@ namespace PokemonGBMP
             this.secondarySpriteIndex.TabIndex = 11;
             this.secondarySpriteIndex.Text = "Sprite Index: ";
             // 
+            // secOnGrassText
+            // 
+            this.secOnGrassText.AutoSize = true;
+            this.secOnGrassText.Location = new System.Drawing.Point(15, 364);
+            this.secOnGrassText.Name = "secOnGrassText";
+            this.secOnGrassText.Size = new System.Drawing.Size(57, 13);
+            this.secOnGrassText.TabIndex = 12;
+            this.secOnGrassText.Text = "On Grass: ";
+            // 
+            // secOnCombatText
+            // 
+            this.secOnCombatText.AutoSize = true;
+            this.secOnCombatText.Location = new System.Drawing.Point(14, 386);
+            this.secOnCombatText.Name = "secOnCombatText";
+            this.secOnCombatText.Size = new System.Drawing.Size(66, 13);
+            this.secOnCombatText.TabIndex = 13;
+            this.secOnCombatText.Text = "On Combat: ";
+            // 
+            // mainBadges
+            // 
+            this.mainBadges.AutoSize = true;
+            this.mainBadges.Location = new System.Drawing.Point(14, 237);
+            this.mainBadges.Name = "mainBadges";
+            this.mainBadges.Size = new System.Drawing.Size(66, 13);
+            this.mainBadges.TabIndex = 14;
+            this.mainBadges.Text = "On Combat: ";
+            // 
+            // secBadges
+            // 
+            this.secBadges.AutoSize = true;
+            this.secBadges.Location = new System.Drawing.Point(13, 408);
+            this.secBadges.Name = "secBadges";
+            this.secBadges.Size = new System.Drawing.Size(66, 13);
+            this.secBadges.TabIndex = 15;
+            this.secBadges.Text = "On Combat: ";
+            // 
             // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 450);
+            this.Controls.Add(this.secBadges);
+            this.Controls.Add(this.mainBadges);
+            this.Controls.Add(this.secOnCombatText);
+            this.Controls.Add(this.secOnGrassText);
             this.Controls.Add(this.secondarySpriteIndex);
             this.Controls.Add(this.secondaryMapIdText);
             this.Controls.Add(this.mainPosText);
@@ -190,5 +234,9 @@ namespace PokemonGBMP
         private System.Windows.Forms.Label secondaryPosText;
         private System.Windows.Forms.Label secondaryMapIdText;
         private System.Windows.Forms.Label secondarySpriteIndex;
+        private System.Windows.Forms.Label secOnGrassText;
+        private System.Windows.Forms.Label secOnCombatText;
+        private System.Windows.Forms.Label mainBadges;
+        private System.Windows.Forms.Label secBadges;
     }
 }

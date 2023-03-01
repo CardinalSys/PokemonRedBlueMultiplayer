@@ -36,13 +36,21 @@ namespace PokemonGBMP
             //Box
             public int[] mainPkmBox = new int[20];
 
+            //Flags
+            public int mainMewtwo, mainArticuno, mainMoltres, mainZapdos;
+
         //Player two (Client)
             public int secondaryAbsXPos, secondaryAbsYPos;
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
+            public int secondaryBadgets;
             public int secondarySpriteImageIndex;
+            public int secondaryIsOnCombat;
+            public int secondaryIsOnGrass;
 
+            //Flags
+            public int secondaryMewtwo, secondaryArticuno, secondaryMoltres, secondaryZapdos;
 
         public bool isConnected;
         public bool procHooked;
@@ -106,25 +114,28 @@ namespace PokemonGBMP
 
         private void ScanMainValues()
         {
+            //Movement
             mainYPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,361");
             mainXPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,362");
-
             mainSpriteImageIndex = mem.ReadByte("visualboyadvance-m.exe+039602E0,102");
-
             mainIsOnGrass = mem.ReadByte("visualboyadvance-m.exe+039602E0,207");
-
-
             mainMapID = mem.ReadByte("visualboyadvance-m.exe+039602E8,35E");
 
-            mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
-
+            //Misc
             mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
+
+            //flags
+            mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
+            mainMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
+            mainArticuno = mem.ReadByte("visualboyadvance-m.exe+039602E8,782");
+            mainMoltres = mem.ReadByte("visualboyadvance-m.exe+039602E8,7EE");
+            mainZapdos = mem.ReadByte("visualboyadvance-m.exe+039602E8,7D4");
         }
 
         private void WriteSecondaryValues()
         {
 
-            if(mainMapID == secondaryMapId)
+            if(mainMapID == secondaryMapId && mainIsOnCombat == 0)
             {
                 //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
@@ -146,6 +157,16 @@ namespace PokemonGBMP
             else
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
+            //WriteFlags
+            if(mainMewtwo == 1)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,5C0" , "byte", "1");
+            if (mainArticuno == 1)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,782", "byte", "1");
+            if (mainMoltres == 1)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7EE", "byte", "1");
+            if (mainZapdos == 1)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
+
         }
 
         private void mainTimer_Tick(object sender, EventArgs e)
@@ -162,16 +183,26 @@ namespace PokemonGBMP
 
         private void combatBtm_Click(object sender, EventArgs e)
         {
-            Combat combat = new Combat(this);
-            combat.Show();
+            if (mainMapID == secondaryMapId)
+            {
+                Combat combat = new Combat(this);
+                combat.Show();
+            }
+            else
+                MessageBox.Show("Your are not near to the other player");
         }
 
 
 
         private void TradeBtm_Click(object sender, EventArgs e)
         {
-            box = new Box(this);
-            box.Show();
+            if (mainMapID == secondaryMapId)
+            {
+                box = new Box(this);
+                box.Show();
+            }
+            else
+                MessageBox.Show("Your are not near to the other player");
         }
 
 

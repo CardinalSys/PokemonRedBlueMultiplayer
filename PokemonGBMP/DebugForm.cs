@@ -34,11 +34,12 @@ namespace PokemonGBMP
 
             mainMapIdText.Text = "Current MapID: " + main.mainMapID;
 
-
             if (main.mainIsOnCombat == 0)
                 mainOnCombatText.Text = "Is on combat: False";
             else
                 mainOnCombatText.Text = "Is on combat: True";
+
+            mainBadges.Text = "Badges: " + main.mainBadgets;
 
             //Secondary Player
             secondaryMapIdText.Text = "Current MapID: " + main.secondaryMapId;
@@ -46,6 +47,19 @@ namespace PokemonGBMP
             secondaryPosText.Text = "Position: " + main.secondaryRelXPos + ";" + main.secondaryRelYPos;
 
             secondarySpriteIndex.Text = "Sprite index: " + main.secondarySpriteImageIndex;
+
+            if (main.secondaryIsOnGrass == 0)
+                secOnGrassText.Text = "Is on grass: False";
+            else
+                secOnGrassText.Text = "Is on grass: True";
+
+            if (main.secondaryIsOnCombat == 0)
+                secOnCombatText.Text = "Is on combat: False";
+            else
+                secOnCombatText.Text = "Is on combat: True";
+
+
+            secBadges.Text = "Badges: " + main.secondaryBadgets;
         }
     }
 }
