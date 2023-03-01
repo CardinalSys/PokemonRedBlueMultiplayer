@@ -152,6 +152,7 @@ namespace PokemonGBMP
 
                 //Animation          
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString("X"));
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,2F7", "byte", secondaryIsOnGrass.ToString("X"));
 
             }
             else
