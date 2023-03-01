@@ -99,16 +99,21 @@ namespace PokemonGBMP
 
         private async void Listen()
         {
-            stream = client.GetStream();
+            try
+            {
+                stream = client.GetStream();
+                byte[] buffer = new byte[1024];
+                int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
+                ReadSocket(msg);
 
-            byte[] buffer = new byte[1024];
-
-            int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
-
-            string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
-
-            ReadSocket(msg);
-
+            }
+            catch
+            {
+                SocketTimer.Enabled = false;
+                MessageBox.Show("Connection Lost");
+                this.Close();
+            }
         }
 
         public void SendSocket(string msg)
