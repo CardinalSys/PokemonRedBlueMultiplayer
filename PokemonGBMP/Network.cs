@@ -128,7 +128,9 @@ namespace PokemonGBMP
                         ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + "Y" + box.slctPkmText.Text
                         + ";" + box.readyCheckBox.Checked);
                 else
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + "Y" + "null" + ";" + "false");
+                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
+                        ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + "Y" + "null"
+                        + ";" + "false");
             }
 
 
