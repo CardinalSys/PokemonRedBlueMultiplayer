@@ -62,8 +62,6 @@ namespace PokemonGBMP
         }
 
 
-
-
         private void connectBtm_Click(object sender, EventArgs e)
         {
             if (procHooked)
@@ -95,8 +93,40 @@ namespace PokemonGBMP
 
         public void CalculateRelativePosition()
         {
-            secondaryRelXPos = 0x40 + ((secondaryAbsXPos - mainXPos) * 0xF);
-            secondaryRelYPos = 0x3C + ((secondaryAbsYPos - mainYPos) * 0xF);
+            double progresoX = 0;
+            double progresoY = 0;
+
+            if (mainSpriteImageIndex >= 8 && mainSpriteImageIndex < 12)
+            {
+                if ((mainSpriteImageIndex % 2) == 0)
+                    progresoX = 0;
+                else
+                    progresoX = -0.5f;
+            }
+            else if(mainSpriteImageIndex >= 12)
+            {
+                if ((mainSpriteImageIndex % 2) == 0)
+                    progresoX = 0;
+                else
+                    progresoX = 0.5f;
+            }
+            if (mainSpriteImageIndex >= 0 && mainSpriteImageIndex < 4)
+            {
+                if ((mainSpriteImageIndex % 2) == 0)
+                    progresoY = 0;
+                else
+                    progresoY = 0.5f;
+            }
+            else if(mainSpriteImageIndex >= 4 && mainSpriteImageIndex < 8)
+            {
+                if ((mainSpriteImageIndex % 2) == 0)
+                    progresoY = 0;
+                else
+                    progresoY = -0.5f;
+            }
+
+            secondaryRelXPos = 0x40 + (int)(((secondaryAbsXPos - mainXPos) * 0x10) - (progresoX * 0x10));
+            secondaryRelYPos = 0x3C + (int)(((secondaryAbsYPos - mainYPos) * 0x10) - (progresoY * 0x10));
         }
 
 
