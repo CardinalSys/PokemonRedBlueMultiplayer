@@ -17,6 +17,11 @@ namespace PokemonGBMP
         {
             InitializeComponent();
             this.main = main;
+            if(!main.canChangeGameMode)
+            {
+                gameModeSelector.SelectedIndex = 1;
+                gameModeSelector.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,7 +32,7 @@ namespace PokemonGBMP
 
         private void gameModeSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(gameModeSelector.SelectedItem != null)
+            if(gameModeSelector.SelectedItem != null && main.canChangeGameMode)
             {
                 DialogResult result = MessageBox.Show("This cannot be change, are you sure you want to change the game mode?", "Confirmation", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)

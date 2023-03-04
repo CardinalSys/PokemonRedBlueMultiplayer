@@ -76,6 +76,7 @@ namespace PokemonGBMP
         public bool isConnected;
         public bool procHooked;
         public bool friendlyMode;
+        public bool canChangeGameMode = true;
         public MainForm()
         {
             InitializeComponent();
@@ -203,6 +204,7 @@ namespace PokemonGBMP
             //Misc
             mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
             mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
+            canChangeGameMode = mem.ReadByte("visualboyadvance-m.exe+039602E8,60D") == 0;
 
             //Legendary flags
             mainMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
