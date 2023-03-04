@@ -54,6 +54,14 @@ namespace PokemonGBMP
                 secondaryArticuno = int.Parse(mov[8]);
                 secondaryMoltres = int.Parse(mov[9]);
                 secondaryZapdos = int.Parse(mov[10]);
+                sFoughtGiovanni = int.Parse(mov[11]);
+                sFoughtBrock = int.Parse(mov[12]);
+                sFoughtMisty = int.Parse(mov[13]);
+                sFoughtSurge = int.Parse(mov[14]);
+                sFoughtErika = int.Parse(mov[15]);
+                sFoughtKoga = int.Parse(mov[16]);
+                sFoughtBlaine = int.Parse(mov[17]);
+                sFoughtSabrina = int.Parse(mov[18]);
                 CalculateRelativePosition();
 
                 //Trade
@@ -128,14 +136,18 @@ namespace PokemonGBMP
             Listen();
             if (!onTrade)
             {
+                string slctPkm = "null";
+                bool isReady = false;
+
                 if (box != null)
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
-                        ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + "Y" + box.slctPkmText.Text
-                        + ";" + box.readyCheckBox.Checked);
-                else
-                    SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
-                        ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + "Y" + "null"
-                        + ";" + "false");
+                {
+                    slctPkm = box.slctPkmText.Text;
+                    isReady = box.readyCheckBox.Checked;
+                }
+
+                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
+                    ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + ";" + mFoughtGiovanni + ";" + mFoughtBrock + ";" + mFoughtMisty + ";" +
+                    mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + "Y" + slctPkm + ";" + isReady);
             }
 
 

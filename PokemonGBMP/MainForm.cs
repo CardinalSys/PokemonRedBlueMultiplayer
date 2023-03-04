@@ -39,8 +39,18 @@ namespace PokemonGBMP
             //Flags
             public int mainMewtwo, mainArticuno, mainMoltres, mainZapdos;
 
+            //Friendly Mode flags (Giovanni, Brock, Misty, Lt Surge, Erika, Koga, Blaine, Sabrina, SS Anne, from D5A6 to D5C5
+            public int mFoughtGiovanni;
+            public int mFoughtBrock;
+            public int mFoughtMisty;
+            public int mFoughtSurge;
+            public int mFoughtErika;
+            public int mFoughtKoga;
+            public int mFoughtBlaine;
+            public int mFoughtSabrina;
+
         //Player two (Client)
-            public int secondaryAbsXPos, secondaryAbsYPos;
+        public int secondaryAbsXPos, secondaryAbsYPos;
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
@@ -52,13 +62,23 @@ namespace PokemonGBMP
             //Flags
             public int secondaryMewtwo, secondaryArticuno, secondaryMoltres, secondaryZapdos;
 
+            //Friendly Mode flags (Giovanni, Brock, Misty, Lt Surge, Erika, Koga, Blaine, Sabrina, SS Anne, from D5A6 to D5C5
+            public int sFoughtGiovanni;
+            public int sFoughtBrock;
+            public int sFoughtMisty;
+            public int sFoughtSurge;
+            public int sFoughtErika;
+            public int sFoughtKoga;
+            public int sFoughtBlaine;
+            public int sFoughtSabrina;
+
+
         public bool isConnected;
         public bool procHooked;
-
+        public bool friendlyMode;
         public MainForm()
         {
             InitializeComponent();
-
         }
 
 
@@ -75,6 +95,11 @@ namespace PokemonGBMP
                 MessageBox.Show("Open the game before start");
         }
 
+        private void optionBtm_Click(object sender, EventArgs e)
+        {
+            OptionsForm options = new OptionsForm(this);
+            options.Show();
+        }
 
         private void hostBtm_Click(object sender, EventArgs e)
         {
@@ -138,6 +163,30 @@ namespace PokemonGBMP
                 if (mainPkmBox[i] < 0 || mainPkmBox[i] >= 255)
                     mainPkmBox[i] = 0;
             }
+        }
+
+        //Friendly mode: Badgets, Story Flags, Tp, MO
+        private void FriendlyMode()
+        {
+            //Badgets
+            if (mainBadgets < secondaryBadgets)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,356", "byte", secondaryBadgets.ToString("X"));
+            if (mFoughtGiovanni < sFoughtGiovanni)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,751", "byte", sFoughtGiovanni.ToString("X"));
+            if (mFoughtBrock < sFoughtBrock)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,755", "byte", sFoughtBrock.ToString("X"));
+            if (mFoughtMisty < sFoughtMisty)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,773", "byte", sFoughtMisty.ToString("X"));
+            if (mFoughtSurge < sFoughtSurge)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,77E", "byte", sFoughtSurge.ToString("X"));
+            if (mFoughtErika < sFoughtErika)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,77C", "byte", sFoughtErika.ToString("X"));
+            if (mFoughtKoga < sFoughtKoga)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,792", "byte", sFoughtKoga.ToString("X"));
+            if (mFoughtBlaine < sFoughtBlaine)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,79A", "byte", sFoughtBlaine.ToString("X"));
+            if (mFoughtSabrina < sFoughtSabrina)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7B3", "byte", sFoughtSabrina.ToString("X"));
 
         }
 
@@ -153,16 +202,26 @@ namespace PokemonGBMP
 
             //Misc
             mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
-
-            //flags
             mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
+
+            //Legendary flags
             mainMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
             mainArticuno = mem.ReadByte("visualboyadvance-m.exe+039602E8,782");
             mainMoltres = mem.ReadByte("visualboyadvance-m.exe+039602E8,7EE");
             mainZapdos = mem.ReadByte("visualboyadvance-m.exe+039602E8,7D4");
-        }
 
-        private void WriteSecondaryValues()
+            //Gym flags
+            mFoughtGiovanni = mem.ReadByte("visualboyadvance-m.exe+039602E8,751");
+            mFoughtBrock = mem.ReadByte("visualboyadvance-m.exe+039602E8,755");
+            mFoughtMisty = mem.ReadByte("visualboyadvance-m.exe+039602E8,75E");
+            mFoughtSurge = mem.ReadByte("visualboyadvance-m.exe+039602E8,773");
+            mFoughtErika = mem.ReadByte("visualboyadvance-m.exe+039602E8,77C");
+            mFoughtKoga = mem.ReadByte("visualboyadvance-m.exe+039602E8,792");
+            mFoughtBlaine = mem.ReadByte("visualboyadvance-m.exe+039602E8,79A");
+            mFoughtSabrina = mem.ReadByte("visualboyadvance-m.exe+039602E8,7B3");
+        }   
+
+        private void WriteValues()
         {
 
             if(mainMapID == secondaryMapId && mainIsOnCombat == 0)
@@ -198,6 +257,9 @@ namespace PokemonGBMP
             if (mainZapdos == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
 
+            if (friendlyMode)
+                FriendlyMode();
+
         }
 
         private void mainTimer_Tick(object sender, EventArgs e)
@@ -206,7 +268,7 @@ namespace PokemonGBMP
             {
                 procHooked = true;
                 ScanMainValues();
-                WriteSecondaryValues();
+                WriteValues();
             }
             else
                 procHooked = false;
@@ -236,12 +298,10 @@ namespace PokemonGBMP
                 MessageBox.Show("Your are not near to the other player");
         }
 
-
-
         private void debugBtm_Click(object sender, EventArgs e)
-            {
-                DebugForm debug = new DebugForm(this);
-                debug.Show();
-            }
+        {
+            DebugForm debug = new DebugForm(this);
+            debug.Show();
         }
+    }
 }
