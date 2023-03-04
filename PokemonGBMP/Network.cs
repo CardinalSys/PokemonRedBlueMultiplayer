@@ -62,6 +62,8 @@ namespace PokemonGBMP
                 sFoughtKoga = int.Parse(mov[16]);
                 sFoughtBlaine = int.Parse(mov[17]);
                 sFoughtSabrina = int.Parse(mov[18]);
+                sFoughtFSnorlax = int.Parse(mov[19]);
+                sFoughtSSnorlax = int.Parse(mov[20]);
                 CalculateRelativePosition();
 
                 //Trade
@@ -147,7 +149,7 @@ namespace PokemonGBMP
 
                 SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
                     ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + ";" + mFoughtGiovanni + ";" + mFoughtBrock + ";" + mFoughtMisty + ";" +
-                    mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + "Y" + slctPkm + ";" + isReady);
+                    mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + ";" + mFoughtFSnorlax + ";" + mFoughtSSnorlax + "Y" + slctPkm + ";" + isReady);
             }
 
 

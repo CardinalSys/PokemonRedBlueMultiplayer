@@ -48,6 +48,8 @@ namespace PokemonGBMP
             public int mFoughtKoga;
             public int mFoughtBlaine;
             public int mFoughtSabrina;
+            public int mFoughtFSnorlax;
+            public int mFoughtSSnorlax;
 
         //Player two (Client)
         public int secondaryAbsXPos, secondaryAbsYPos;
@@ -71,6 +73,8 @@ namespace PokemonGBMP
             public int sFoughtKoga;
             public int sFoughtBlaine;
             public int sFoughtSabrina;
+            public int sFoughtFSnorlax;
+            public int sFoughtSSnorlax;
 
 
         public bool isConnected;
@@ -188,6 +192,10 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,79A", "byte", sFoughtBlaine.ToString("X"));
             if (mFoughtSabrina < sFoughtSabrina)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7B3", "byte", sFoughtSabrina.ToString("X"));
+            if(mFoughtFSnorlax < sFoughtFSnorlax)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D8", "byte", sFoughtFSnorlax.ToString("X"));
+            if (mFoughtSSnorlax < sFoughtSSnorlax)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7E0", "byte", sFoughtSSnorlax.ToString("X"));
 
         }
 
@@ -221,6 +229,9 @@ namespace PokemonGBMP
             mFoughtKoga = mem.ReadByte("visualboyadvance-m.exe+039602E8,792");
             mFoughtBlaine = mem.ReadByte("visualboyadvance-m.exe+039602E8,79A");
             mFoughtSabrina = mem.ReadByte("visualboyadvance-m.exe+039602E8,7B3");
+
+            mFoughtFSnorlax = mem.ReadByte("visualboyadvance-m.exe+039602E8,7D8");
+            mFoughtSSnorlax = mem.ReadByte("visualboyadvance-m.exe+039602E8,7E0");
         }   
 
         private void WriteValues()
@@ -259,7 +270,7 @@ namespace PokemonGBMP
             if (mainZapdos == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
 
-            if (friendlyMode)
+            if (friendlyMode && !canChangeGameMode)
                 FriendlyMode();
 
         }
