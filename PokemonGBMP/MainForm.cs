@@ -121,6 +121,8 @@ namespace PokemonGBMP
 
         }
 
+
+
         public void CalculateRelativePosition()
         {
             double progresoX = 0;
@@ -173,6 +175,8 @@ namespace PokemonGBMP
         //Friendly mode: Badgets, Story Flags, Tp, MO
         private void FriendlyMode()
         {
+
+
             //Badgets
             if (mainBadgets < secondaryBadgets)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,356", "byte", secondaryBadgets.ToString("X"));
@@ -192,6 +196,7 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,79A", "byte", sFoughtBlaine.ToString("X"));
             if (mFoughtSabrina < sFoughtSabrina)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7B3", "byte", sFoughtSabrina.ToString("X"));
+            //Other flags
             if(mFoughtFSnorlax < sFoughtFSnorlax)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D8", "byte", sFoughtFSnorlax.ToString("X"));
             if (mFoughtSSnorlax < sFoughtSSnorlax)
@@ -311,10 +316,12 @@ namespace PokemonGBMP
                 MessageBox.Show("Your are not near to the other player");
         }
 
-        private void debugBtm_Click(object sender, EventArgs e)
+
+        private void tpButton_Click(object sender, EventArgs e)
         {
-            DebugForm debug = new DebugForm(this);
-            debug.Show();
+            mem.WriteMemory("visualboyadvance-m.exe+039602E8,361", "int", secondaryAbsYPos.ToString("X"));
+            mem.WriteMemory("visualboyadvance-m.exe+039602E8,362", "int", secondaryAbsXPos.ToString("X"));
+            mem.WriteMemory("visualboyadvance-m.exe+039602E8,35E", "int", secondaryMapId.ToString("X"));
         }
     }
 }

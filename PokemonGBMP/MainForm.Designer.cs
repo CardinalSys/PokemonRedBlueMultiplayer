@@ -35,6 +35,7 @@ namespace PokemonGBMP
             this.startPannel = new System.Windows.Forms.Panel();
             this.ipInputBox = new System.Windows.Forms.TextBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.tpButton = new System.Windows.Forms.Button();
             this.optionBtm = new System.Windows.Forms.Button();
             this.mapBtm = new System.Windows.Forms.Button();
             this.TradeBtm = new System.Windows.Forms.Button();
@@ -98,6 +99,7 @@ namespace PokemonGBMP
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.Transparent;
+            this.mainPanel.Controls.Add(this.tpButton);
             this.mainPanel.Controls.Add(this.optionBtm);
             this.mainPanel.Controls.Add(this.mapBtm);
             this.mainPanel.Controls.Add(this.TradeBtm);
@@ -107,6 +109,16 @@ namespace PokemonGBMP
             this.mainPanel.Size = new System.Drawing.Size(387, 345);
             this.mainPanel.TabIndex = 6;
             this.mainPanel.Visible = false;
+            // 
+            // tpButton
+            // 
+            this.tpButton.Location = new System.Drawing.Point(155, 262);
+            this.tpButton.Name = "tpButton";
+            this.tpButton.Size = new System.Drawing.Size(75, 23);
+            this.tpButton.TabIndex = 11;
+            this.tpButton.Text = "Tp";
+            this.tpButton.UseVisualStyleBackColor = true;
+            this.tpButton.Click += new System.EventHandler(this.tpButton_Click);
             // 
             // optionBtm
             // 
@@ -208,6 +220,7 @@ namespace PokemonGBMP
         private System.Windows.Forms.Button optionBtm;
         private System.Windows.Forms.Timer SocketTimer;
         private System.Windows.Forms.TextBox ipInputBox;
+        private System.Windows.Forms.Button tpButton;
     }
 }
 
