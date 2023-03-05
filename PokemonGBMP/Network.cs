@@ -67,7 +67,7 @@ namespace PokemonGBMP
                  
                 for(int i = 0; i < sPkdex.Length; i++)
                 {
-                    sPkdex[i] = byte.Parse(mov[21], NumberStyles.HexNumber);
+                    sPkdex[i] = byte.Parse(mov[21].Split(' ')[i], NumberStyles.HexNumber);
                 }
                 CalculateRelativePosition();
 
@@ -116,19 +116,23 @@ namespace PokemonGBMP
         {
             try
             {
-                stream = client.GetStream();
-                byte[] buffer = new byte[1024];
-                int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
-                string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
-                ReadSocket(msg);
 
             }
             catch (Exception e)
             {
-                SocketTimer.Enabled = false;
-                MessageBox.Show("Connection Lost: " + e.Message);
-                this.Close();
+
             }
+
+            stream = client.GetStream();
+            byte[] buffer = new byte[1024];
+            int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
+            string msg = Encoding.ASCII.GetString(buffer, 0, bytes);
+            ReadSocket(msg);
+
+
+            SocketTimer.Enabled = false;
+            MessageBox.Show("Connection Lost: ");
+            this.Close();
         }
 
         public void SendSocket(string msg)
