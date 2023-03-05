@@ -51,8 +51,11 @@ namespace PokemonGBMP
             public int mFoughtFSnorlax;
             public int mFoughtSSnorlax;
 
+            //pokedex
+            public byte[] mPkdex = new byte[37];
+
         //Player two (Client)
-        public int secondaryAbsXPos, secondaryAbsYPos;
+            public int secondaryAbsXPos, secondaryAbsYPos;
             public int secondaryRelXPos, secondaryRelYPos;
             public int secondaryMapId;
 
@@ -76,6 +79,8 @@ namespace PokemonGBMP
             public int sFoughtFSnorlax;
             public int sFoughtSSnorlax;
 
+            //pokedex
+            public byte[] sPkdex = new byte[37];
 
         public bool isConnected;
         public bool procHooked;
@@ -170,7 +175,7 @@ namespace PokemonGBMP
             }
         }
 
-        //Friendly mode: Badgets, Story Flags, Tp, MO
+        //Friendly mode: Badgets, Story Flags, MO
         private void FriendlyMode()
         {
             //Badgets
@@ -196,6 +201,16 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D8", "byte", sFoughtFSnorlax.ToString("X"));
             if (mFoughtSSnorlax < sFoughtSSnorlax)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7E0", "byte", sFoughtSSnorlax.ToString("X"));
+
+            mPkdex = mem.ReadBytes("visualboyadvance-m.exe+039602E,30A", 37);
+            //Pokedex
+            for (int i = 0; i < mPkdex.Length; i++)
+            {
+                if(mPkdex[i] < sPkdex[i])
+                {
+                    mPkdex[i] = sPkdex[i];
+                }
+            }
 
         }
 

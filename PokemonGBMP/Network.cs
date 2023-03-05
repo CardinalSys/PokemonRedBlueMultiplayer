@@ -64,6 +64,11 @@ namespace PokemonGBMP
                 sFoughtSabrina = int.Parse(mov[18]);
                 sFoughtFSnorlax = int.Parse(mov[19]);
                 sFoughtSSnorlax = int.Parse(mov[20]);
+                 
+                for(int i = 0; i < sPkdex.Length; i++)
+                {
+                    sPkdex[i] = byte.Parse(mov[21], NumberStyles.HexNumber);
+                }
                 CalculateRelativePosition();
 
                 //Trade
@@ -149,7 +154,7 @@ namespace PokemonGBMP
 
                 SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
                     ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + ";" + mFoughtGiovanni + ";" + mFoughtBrock + ";" + mFoughtMisty + ";" +
-                    mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + ";" + mFoughtFSnorlax + ";" + mFoughtSSnorlax + "Y" + slctPkm + ";" + isReady);
+                    mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + ";" + mFoughtFSnorlax + ";" + mFoughtSSnorlax + ";" + BitConverter.ToString(mPkdex) + "Y" + slctPkm + ";" + isReady);
             }
 
 
