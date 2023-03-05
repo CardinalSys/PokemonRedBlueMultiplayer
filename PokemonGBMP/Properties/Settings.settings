@@ -6,7 +6,7 @@
       <Value Profile="(Default)">127.0.0.1</Value>
     </Setting>
     <Setting Name="friendlyMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
