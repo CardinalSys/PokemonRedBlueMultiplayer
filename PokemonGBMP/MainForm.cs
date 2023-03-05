@@ -212,7 +212,7 @@ namespace PokemonGBMP
                 if(mPkdex[i] < sPkdex[i])
                 {
                     mPkdex[i] = sPkdex[i];
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E,"+ (0x30A + i).ToString("X"), "byte", mPkdex[i].ToString("X"));
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E8," + (0x30A + i).ToString("X"), "byte", mPkdex[i].ToString("X"));
                 }
             }
 
