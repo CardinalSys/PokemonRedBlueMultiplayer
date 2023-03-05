@@ -128,10 +128,6 @@ namespace PokemonGBMP
 
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.friendlyMode = friendlyMode;
-        }
 
         public void CalculateRelativePosition()
         {
@@ -339,7 +335,10 @@ namespace PokemonGBMP
             DebugForm debug = new DebugForm(this);
             debug.Show();
         }
-
-        
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.friendlyMode = friendlyMode;
+            Properties.Settings.Default.Save();
+        }
     }
 }
