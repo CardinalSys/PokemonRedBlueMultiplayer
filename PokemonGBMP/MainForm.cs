@@ -89,6 +89,8 @@ namespace PokemonGBMP
         public MainForm()
         {
             InitializeComponent();
+            ipInputBox.Text = Properties.Settings.Default.Ip;
+            friendlyMode = Properties.Settings.Default.friendlyMode;
         }
 
 
@@ -124,6 +126,11 @@ namespace PokemonGBMP
             else
                 MessageBox.Show("Open the game before start");
 
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.friendlyMode = friendlyMode;
         }
 
         public void CalculateRelativePosition()
@@ -209,6 +216,7 @@ namespace PokemonGBMP
                 if(mPkdex[i] < sPkdex[i])
                 {
                     mem.WriteMemory("visualboyadvance-m.exe+039602E,"+ (0x30A + i).ToString("X"), "byte", sPkdex[i].ToString("X"));
+                    MessageBox.Show("visualboyadvance-m.exe+039602E," + (0x30A + i).ToString("X"));
                 }
             }
 
@@ -227,7 +235,7 @@ namespace PokemonGBMP
             //Misc
             mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
             mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
-            canChangeGameMode = mem.ReadByte("visualboyadvance-m.exe+039602E8,60D") == 0;
+            canChangeGameMode = mem.ReadByte("visualboyadvance-m.exe+039602E8,60D") == 0 && mainBadgets == 0;
 
             //Legendary flags
             mainMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
@@ -331,5 +339,7 @@ namespace PokemonGBMP
             DebugForm debug = new DebugForm(this);
             debug.Show();
         }
+
+        
     }
 }

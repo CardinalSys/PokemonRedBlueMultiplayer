@@ -188,6 +188,7 @@ namespace PokemonGBMP
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.startPannel.ResumeLayout(false);
             this.startPannel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
