@@ -123,10 +123,10 @@ namespace PokemonGBMP
                 ReadSocket(msg);
 
             }
-            catch
+            catch (Exception e)
             {
                 SocketTimer.Enabled = false;
-                MessageBox.Show("Connection Lost");
+                MessageBox.Show("Connection Lost: " + e.Message);
                 this.Close();
             }
         }
