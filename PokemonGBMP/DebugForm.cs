@@ -60,6 +60,9 @@ namespace PokemonGBMP
 
 
             secBadges.Text = "Badges: " + main.secondaryBadgets;
+
+            richTextBox1.Text = BitConverter.ToString(main.mPkdex);
+            richTextBox2.Text = BitConverter.ToString(main.sPkdex);
         }
     }
 }

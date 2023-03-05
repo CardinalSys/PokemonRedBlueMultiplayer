@@ -202,13 +202,13 @@ namespace PokemonGBMP
             if (mFoughtSSnorlax < sFoughtSSnorlax)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7E0", "byte", sFoughtSSnorlax.ToString("X"));
 
-            mPkdex = mem.ReadBytes("visualboyadvance-m.exe+039602E,30A", 37);
+            mPkdex = mem.ReadBytes("visualboyadvance-m.exe+039602E8,30A", 37);
             //Pokedex
             for (int i = 0; i < mPkdex.Length; i++)
             {
                 if(mPkdex[i] < sPkdex[i])
                 {
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E,30A", "byte", sPkdex[i].ToString("X"));
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E,"+ (0x30A + i).ToString("X"), "byte", sPkdex[i].ToString("X"));
                 }
             }
 

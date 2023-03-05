@@ -21,6 +21,7 @@ namespace PokemonGBMP
             {
                 gameModeSelector.SelectedIndex = 0;
                 gameModeSelector.Enabled = false;
+                main.friendlyMode = true;
             }
         }
 
