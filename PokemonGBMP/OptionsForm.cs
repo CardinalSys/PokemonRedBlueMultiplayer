@@ -19,7 +19,7 @@ namespace PokemonGBMP
             this.main = main;
             if(!main.canChangeGameMode)
             {
-                gameModeSelector.SelectedIndex = 1;
+                gameModeSelector.SelectedIndex = 0;
                 gameModeSelector.Enabled = false;
             }
         }
