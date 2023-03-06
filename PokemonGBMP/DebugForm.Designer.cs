@@ -39,9 +39,9 @@ namespace PokemonGBMP
             this.mainMapIdText = new System.Windows.Forms.Label();
             this.mainOnCombatText = new System.Windows.Forms.Label();
             this.PlayerTwoLabel = new System.Windows.Forms.Label();
-            this.secondaryPosText = new System.Windows.Forms.Label();
-            this.secondaryMapIdText = new System.Windows.Forms.Label();
-            this.secondarySpriteIndex = new System.Windows.Forms.Label();
+            this.sPosText = new System.Windows.Forms.Label();
+            this.sMapIdText = new System.Windows.Forms.Label();
+            this.sSpriteIndex = new System.Windows.Forms.Label();
             this.secOnGrassText = new System.Windows.Forms.Label();
             this.secOnCombatText = new System.Windows.Forms.Label();
             this.mainBadges = new System.Windows.Forms.Label();
@@ -134,30 +134,30 @@ namespace PokemonGBMP
             // 
             // secondaryPosText
             // 
-            this.secondaryPosText.AutoSize = true;
-            this.secondaryPosText.Location = new System.Drawing.Point(14, 315);
-            this.secondaryPosText.Name = "secondaryPosText";
-            this.secondaryPosText.Size = new System.Drawing.Size(47, 13);
-            this.secondaryPosText.TabIndex = 9;
-            this.secondaryPosText.Text = "Position:";
+            this.sPosText.AutoSize = true;
+            this.sPosText.Location = new System.Drawing.Point(14, 315);
+            this.sPosText.Name = "sPosText";
+            this.sPosText.Size = new System.Drawing.Size(47, 13);
+            this.sPosText.TabIndex = 9;
+            this.sPosText.Text = "Position:";
             // 
             // secondaryMapIdText
             // 
-            this.secondaryMapIdText.AutoSize = true;
-            this.secondaryMapIdText.Location = new System.Drawing.Point(14, 290);
-            this.secondaryMapIdText.Name = "secondaryMapIdText";
-            this.secondaryMapIdText.Size = new System.Drawing.Size(82, 13);
-            this.secondaryMapIdText.TabIndex = 10;
-            this.secondaryMapIdText.Text = "Current MapID: ";
+            this.sMapIdText.AutoSize = true;
+            this.sMapIdText.Location = new System.Drawing.Point(14, 290);
+            this.sMapIdText.Name = "sMapIdText";
+            this.sMapIdText.Size = new System.Drawing.Size(82, 13);
+            this.sMapIdText.TabIndex = 10;
+            this.sMapIdText.Text = "Current MapID: ";
             // 
             // secondarySpriteIndex
             // 
-            this.secondarySpriteIndex.AutoSize = true;
-            this.secondarySpriteIndex.Location = new System.Drawing.Point(14, 340);
-            this.secondarySpriteIndex.Name = "secondarySpriteIndex";
-            this.secondarySpriteIndex.Size = new System.Drawing.Size(69, 13);
-            this.secondarySpriteIndex.TabIndex = 11;
-            this.secondarySpriteIndex.Text = "Sprite Index: ";
+            this.sSpriteIndex.AutoSize = true;
+            this.sSpriteIndex.Location = new System.Drawing.Point(14, 340);
+            this.sSpriteIndex.Name = "sSpriteIndex";
+            this.sSpriteIndex.Size = new System.Drawing.Size(69, 13);
+            this.sSpriteIndex.TabIndex = 11;
+            this.sSpriteIndex.Text = "Sprite Index: ";
             // 
             // secOnGrassText
             // 
@@ -242,11 +242,11 @@ namespace PokemonGBMP
             this.Controls.Add(this.mainBadges);
             this.Controls.Add(this.secOnCombatText);
             this.Controls.Add(this.secOnGrassText);
-            this.Controls.Add(this.secondarySpriteIndex);
-            this.Controls.Add(this.secondaryMapIdText);
+            this.Controls.Add(this.sSpriteIndex);
+            this.Controls.Add(this.sMapIdText);
             this.Controls.Add(this.mainPosText);
             this.Controls.Add(this.mainSpriteIndexText);
-            this.Controls.Add(this.secondaryPosText);
+            this.Controls.Add(this.sPosText);
             this.Controls.Add(this.PlayerTwoLabel);
             this.Controls.Add(this.mainOnCombatText);
             this.Controls.Add(this.mainMapIdText);
@@ -273,9 +273,9 @@ namespace PokemonGBMP
         private System.Windows.Forms.Label mainMapIdText;
         private System.Windows.Forms.Label mainOnCombatText;
         private System.Windows.Forms.Label PlayerTwoLabel;
-        private System.Windows.Forms.Label secondaryPosText;
-        private System.Windows.Forms.Label secondaryMapIdText;
-        private System.Windows.Forms.Label secondarySpriteIndex;
+        private System.Windows.Forms.Label sPosText;
+        private System.Windows.Forms.Label sMapIdText;
+        private System.Windows.Forms.Label sSpriteIndex;
         private System.Windows.Forms.Label secOnGrassText;
         private System.Windows.Forms.Label secOnCombatText;
         private System.Windows.Forms.Label mainBadges;

@@ -45,17 +45,17 @@ namespace PokemonGBMP
                 //Movement
                 string[] mov;
                 mov = socket.Replace("X", "").Split('Y')[0].Split(';');
-                secondaryAbsXPos = int.Parse(mov[0]);
-                secondaryAbsYPos = int.Parse(mov[1]);
-                secondaryMapId = int.Parse(mov[2]);
-                secondarySpriteImageIndex = int.Parse(mov[3]);
-                secondaryIsOnCombat = int.Parse(mov[4]);
-                secondaryIsOnGrass = int.Parse(mov[5]);
-                secondaryBadgets = int.Parse(mov[6]);
-                secondaryMewtwo = int.Parse(mov[7]);
-                secondaryArticuno = int.Parse(mov[8]);
-                secondaryMoltres = int.Parse(mov[9]);
-                secondaryZapdos = int.Parse(mov[10]);
+                sAbsXPos = int.Parse(mov[0]);
+                sAbsYPos = int.Parse(mov[1]);
+                sMapId = int.Parse(mov[2]);
+                sSpriteImageIndex = int.Parse(mov[3]);
+                sIsOnCombat = int.Parse(mov[4]);
+                sIsOnGrass = int.Parse(mov[5]);
+                sBadgets = int.Parse(mov[6]);
+                sMewtwo = int.Parse(mov[7]);
+                sArticuno = int.Parse(mov[8]);
+                sMoltres = int.Parse(mov[9]);
+                sZapdos = int.Parse(mov[10]);
                 sFoughtGiovanni = int.Parse(mov[11]);
                 sFoughtBrock = int.Parse(mov[12]);
                 sFoughtMisty = int.Parse(mov[13]);

@@ -55,17 +55,17 @@ namespace PokemonGBMP
             public byte[] mPkdex = new byte[37];
 
         //Player two (Client)
-            public int secondaryAbsXPos, secondaryAbsYPos;
-            public int secondaryRelXPos, secondaryRelYPos;
-            public int secondaryMapId;
+            public int sAbsXPos, sAbsYPos;
+            public int sRelXPos, sRelYPos;
+            public int sMapId;
 
-            public int secondaryBadgets;
-            public int secondarySpriteImageIndex;
-            public int secondaryIsOnCombat;
-            public int secondaryIsOnGrass;
+            public int sBadgets;
+            public int sSpriteImageIndex;
+            public int sIsOnCombat;
+            public int sIsOnGrass;
 
             //Flags
-            public int secondaryMewtwo, secondaryArticuno, secondaryMoltres, secondaryZapdos;
+            public int sMewtwo, sArticuno, sMoltres, sZapdos;
 
             //Friendly Mode flags (Giovanni, Brock, Misty, Lt Surge, Erika, Koga, Blaine, Sabrina, SS Anne, from D5A6 to D5C5
             public int sFoughtGiovanni;
@@ -163,8 +163,8 @@ namespace PokemonGBMP
                     progresoY = -0.5f;
             }
 
-            secondaryRelXPos = 0x40 + (int)(((secondaryAbsXPos - mainXPos) * 0x10) - (progresoX * 0x10));
-            secondaryRelYPos = 0x3C + (int)(((secondaryAbsYPos - mainYPos) * 0x10) - (progresoY * 0x10));
+            sRelXPos = 0x40 + (int)(((sAbsXPos - mainXPos) * 0x10) - (progresoX * 0x10));
+            sRelYPos = 0x3C + (int)(((sAbsYPos - mainYPos) * 0x10) - (progresoY * 0x10));
         }
 
 
@@ -182,8 +182,8 @@ namespace PokemonGBMP
         private void FriendlyMode()
         {
             //Badgets
-            if (mainBadgets < secondaryBadgets)
-                mem.WriteMemory("visualboyadvance-m.exe+039602E8,356", "byte", secondaryBadgets.ToString("X"));
+            if (mainBadgets < sBadgets)
+                mem.WriteMemory("visualboyadvance-m.exe+039602E8,356", "byte", sBadgets.ToString("X"));
             if (mFoughtGiovanni < sFoughtGiovanni)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,751", "byte", sFoughtGiovanni.ToString("X"));
             if (mFoughtBrock < sFoughtBrock)
@@ -256,24 +256,24 @@ namespace PokemonGBMP
         private void WriteValues()
         {
 
-            if(mainMapID == secondaryMapId && mainIsOnCombat == 0)
+            if(mainMapID == sMapId && mainIsOnCombat == 0)
             {
                 //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
 
                 //if the second player is inside the main player camera, update his position, else hide it
-                if(secondaryRelXPos >= 0 && secondaryRelXPos <= 140)
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", secondaryRelXPos.ToString("X"));
+                if(sRelXPos >= 0 && sRelXPos <= 140)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F6", "byte", sRelXPos.ToString("X"));
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
-                if (secondaryRelYPos >= 0 && secondaryRelYPos <= 120)
-                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", secondaryRelYPos.ToString("X"));
+                if (sRelYPos >= 0 && sRelYPos <= 120)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F4", "byte", sRelYPos.ToString("X"));
                 else
                     mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
                 //Animation          
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", secondarySpriteImageIndex.ToString("X"));
-                mem.WriteMemory("visualboyadvance-m.exe+039602E0,2F7", "byte", secondaryIsOnGrass.ToString("X"));
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F2", "byte", sSpriteImageIndex.ToString("X"));
+                mem.WriteMemory("visualboyadvance-m.exe+039602E0,2F7", "byte", sIsOnGrass.ToString("X"));
 
             }
             else
@@ -311,7 +311,7 @@ namespace PokemonGBMP
 
         private void combatBtm_Click(object sender, EventArgs e)
         {
-            if (mainMapID == secondaryMapId)
+            if (mainMapID == sMapId)
             {
                 Combat combat = new Combat(this);
                 combat.Show();
@@ -324,7 +324,7 @@ namespace PokemonGBMP
 
         private void TradeBtm_Click(object sender, EventArgs e)
         {
-            if (mainMapID == secondaryMapId)
+            if (mainMapID == sMapId)
             {
                 box = new Box(this);
                 box.Show();

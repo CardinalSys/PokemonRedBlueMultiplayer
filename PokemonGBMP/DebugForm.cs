@@ -42,24 +42,24 @@ namespace PokemonGBMP
             mainBadges.Text = "Badges: " + main.mainBadgets;
 
             //Secondary Player
-            secondaryMapIdText.Text = "Current MapID: " + main.secondaryMapId;
+            sMapIdText.Text = "Current MapID: " + main.sMapId;
 
-            secondaryPosText.Text = "Position: " + main.secondaryRelXPos + ";" + main.secondaryRelYPos;
+            sPosText.Text = "Position: " + main.sRelXPos + ";" + main.sRelYPos;
 
-            secondarySpriteIndex.Text = "Sprite index: " + main.secondarySpriteImageIndex;
+            sSpriteIndex.Text = "Sprite index: " + main.sSpriteImageIndex;
 
-            if (main.secondaryIsOnGrass == 0)
+            if (main.sIsOnGrass == 0)
                 secOnGrassText.Text = "Is on grass: False";
             else
                 secOnGrassText.Text = "Is on grass: True";
 
-            if (main.secondaryIsOnCombat == 0)
+            if (main.sIsOnCombat == 0)
                 secOnCombatText.Text = "Is on combat: False";
             else
                 secOnCombatText.Text = "Is on combat: True";
 
 
-            secBadges.Text = "Badges: " + main.secondaryBadgets;
+            secBadges.Text = "Badges: " + main.sBadgets;
 
             richTextBox1.Text = BitConverter.ToString(main.mPkdex);
             richTextBox2.Text = BitConverter.ToString(main.sPkdex);
