@@ -24,20 +24,20 @@ namespace PokemonGBMP
         public Mem mem = new Mem();
 
         //Player one (main)
-            public int mainXPos, mainYPos;
+            public int mXPos, mYPos;
 
         //Animation stuff
-            public int mainSpriteImageIndex;
+            public int mSpriteImageIndex;
 
-            public int mainIsOnGrass; //128 if is true, else 0
-            public int mainMapID;
-            public int mainBadgets;
-            public int mainIsOnCombat;
+            public int mIsOnGrass; //128 if is true, else 0
+            public int mMapID;
+            public int mBadgets;
+            public int mIsOnCombat;
             //Box
-            public int[] mainPkmBox = new int[20];
+            public int[] mPkmBox = new int[20];
 
             //Flags
-            public int mainMewtwo, mainArticuno, mainMoltres, mainZapdos;
+            public int mMewtwo, mArticuno, mMoltres, mZapdos;
 
             //Friendly Mode flags (Giovanni, Brock, Misty, Lt Surge, Erika, Koga, Blaine, Sabrina, SS Anne, from D5A6 to D5C5
             public int mFoughtGiovanni;
@@ -86,6 +86,27 @@ namespace PokemonGBMP
         public bool procHooked;
         public bool friendlyMode;
         public bool canChangeGameMode = true;
+
+        Dictionary<int, Tuple<double, double>> progressMap = new Dictionary<int, Tuple<double, double>>()
+        {
+            { 0, Tuple.Create(0.0, 0.0) },
+            { 1, Tuple.Create(0.5, 0.0) },
+            { 2, Tuple.Create(0.0, 0.0) },
+            { 3, Tuple.Create(0.0, 0.0) },
+            { 4, Tuple.Create(0.0, 0.0) },
+            { 5, Tuple.Create(-0.5, 0.0) },
+            { 6, Tuple.Create(0.0, 0.0) },
+            { 7, Tuple.Create(0.0, 0.0) },
+            { 8, Tuple.Create(0.0, 0.0) },
+            { 9, Tuple.Create(0.0, -0.5) },
+            { 10, Tuple.Create(0.0, 0.0) },
+            { 11, Tuple.Create(0.0, 0.0) },
+            { 12, Tuple.Create(0.0, 0.0) },
+            { 13, Tuple.Create(0.0, 0.5) },
+            { 14, Tuple.Create(0.0, 0.0) },
+            { 15, Tuple.Create(0.0, 0.0) }
+        };
+
         public MainForm()
         {
             InitializeComponent();
@@ -134,47 +155,25 @@ namespace PokemonGBMP
             double progresoX = 0;
             double progresoY = 0;
 
-            if (mainSpriteImageIndex >= 8 && mainSpriteImageIndex < 12)
+            if (progressMap.ContainsKey(mSpriteImageIndex))
             {
-                if ((mainSpriteImageIndex % 2) == 0)
-                    progresoX = 0;
-                else
-                    progresoX = -0.5f;
-            }
-            else if(mainSpriteImageIndex >= 12)
-            {
-                if ((mainSpriteImageIndex % 2) == 0)
-                    progresoX = 0;
-                else
-                    progresoX = 0.5f;
-            }
-            if (mainSpriteImageIndex >= 0 && mainSpriteImageIndex < 4)
-            {
-                if ((mainSpriteImageIndex % 2) == 0)
-                    progresoY = 0;
-                else
-                    progresoY = 0.5f;
-            }
-            else if(mainSpriteImageIndex >= 4 && mainSpriteImageIndex < 8)
-            {
-                if ((mainSpriteImageIndex % 2) == 0)
-                    progresoY = 0;
-                else
-                    progresoY = -0.5f;
+                Tuple<double, double> progressTuple = progressMap[mSpriteImageIndex];
+                progresoY = progressTuple.Item1;
+                progresoX = progressTuple.Item2;
             }
 
-            sRelXPos = 0x40 + (int)(((sAbsXPos - mainXPos) * 0x10) - (progresoX * 0x10));
-            sRelYPos = 0x3C + (int)(((sAbsYPos - mainYPos) * 0x10) - (progresoY * 0x10));
+            sRelXPos = 0x40 + (int)(((sAbsXPos - mXPos) * 0x10) - (progresoX * 0x10));
+            sRelYPos = 0x3C + (int)(((sAbsYPos - mYPos) * 0x10) - (progresoY * 0x10));
         }
 
 
         public void ScanMainBox()
         {
-            for(int i = 0; i < mainPkmBox.Length; i++)
+            for(int i = 0; i < mPkmBox.Length; i++)
             {
-                mainPkmBox[i] = mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0xA81 + i).ToString("X"));
-                if (mainPkmBox[i] < 0 || mainPkmBox[i] >= 255)
-                    mainPkmBox[i] = 0;
+                mPkmBox[i] = mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0xA81 + i).ToString("X"));
+                if (mPkmBox[i] < 0 || mPkmBox[i] >= 255)
+                    mPkmBox[i] = 0;
             }
         }
 
@@ -182,7 +181,7 @@ namespace PokemonGBMP
         private void FriendlyMode()
         {
             //Badgets
-            if (mainBadgets < sBadgets)
+            if (mBadgets < sBadgets)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,356", "byte", sBadgets.ToString("X"));
             if (mFoughtGiovanni < sFoughtGiovanni)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,751", "byte", sFoughtGiovanni.ToString("X"));
@@ -222,22 +221,22 @@ namespace PokemonGBMP
         private void ScanMainValues()
         {
             //Movement
-            mainYPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,361");
-            mainXPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,362");
-            mainSpriteImageIndex = mem.ReadByte("visualboyadvance-m.exe+039602E0,102");
-            mainIsOnGrass = mem.ReadByte("visualboyadvance-m.exe+039602E0,207");
-            mainMapID = mem.ReadByte("visualboyadvance-m.exe+039602E8,35E");
+            mYPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,361");
+            mXPos = mem.ReadByte("visualboyadvance-m.exe+039602E8,362");
+            mSpriteImageIndex = mem.ReadByte("visualboyadvance-m.exe+039602E0,102");
+            mIsOnGrass = mem.ReadByte("visualboyadvance-m.exe+039602E0,207");
+            mMapID = mem.ReadByte("visualboyadvance-m.exe+039602E8,35E");
 
             //Misc
-            mainIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
-            mainBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
-            canChangeGameMode = mem.ReadByte("visualboyadvance-m.exe+039602E8,60D") == 0 && mainBadgets == 0;
+            mIsOnCombat = mem.ReadByte("visualboyadvance-m.exe+039602E8,57");
+            mBadgets = mem.ReadByte("visualboyadvance-m.exe+039602E8,356");
+            canChangeGameMode = mem.ReadByte("visualboyadvance-m.exe+039602E8,60D") == 0 && mBadgets == 0;
 
             //Legendary flags
-            mainMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
-            mainArticuno = mem.ReadByte("visualboyadvance-m.exe+039602E8,782");
-            mainMoltres = mem.ReadByte("visualboyadvance-m.exe+039602E8,7EE");
-            mainZapdos = mem.ReadByte("visualboyadvance-m.exe+039602E8,7D4");
+            mMewtwo = mem.ReadByte("visualboyadvance-m.exe+039602E8,5C0");
+            mArticuno = mem.ReadByte("visualboyadvance-m.exe+039602E8,782");
+            mMoltres = mem.ReadByte("visualboyadvance-m.exe+039602E8,7EE");
+            mZapdos = mem.ReadByte("visualboyadvance-m.exe+039602E8,7D4");
 
             //Gym flags
             mFoughtGiovanni = mem.ReadByte("visualboyadvance-m.exe+039602E8,751");
@@ -256,7 +255,7 @@ namespace PokemonGBMP
         private void WriteValues()
         {
 
-            if(mainMapID == sMapId && mainIsOnCombat == 0)
+            if(mMapID == sMapId && mIsOnCombat == 0)
             {
                 //Spawn second player
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "1");
@@ -280,13 +279,13 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
             //WriteFlags
-            if(mainMewtwo == 1)
+            if(mMewtwo == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,5C0" , "byte", "1");
-            if (mainArticuno == 1)
+            if (mArticuno == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,782", "byte", "1");
-            if (mainMoltres == 1)
+            if (mMoltres == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7EE", "byte", "1");
-            if (mainZapdos == 1)
+            if (mZapdos == 1)
                 mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
 
             if (friendlyMode && !canChangeGameMode)
@@ -311,7 +310,7 @@ namespace PokemonGBMP
 
         private void combatBtm_Click(object sender, EventArgs e)
         {
-            if (mainMapID == sMapId)
+            if (mMapID == sMapId)
             {
                 Combat combat = new Combat(this);
                 combat.Show();
@@ -324,7 +323,7 @@ namespace PokemonGBMP
 
         private void TradeBtm_Click(object sender, EventArgs e)
         {
-            if (mainMapID == sMapId)
+            if (mMapID == sMapId)
             {
                 box = new Box(this);
                 box.Show();

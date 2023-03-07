@@ -108,8 +108,6 @@ namespace PokemonGBMP
                 //Change NickName
                 mem.WriteBytes("visualboyadvance-m.exe+039602E8," + (0xE06 + (11 * box.slctPkmNum)).ToString("X"), nnBytes);
 
-                
-
             }
         }
 
@@ -127,7 +125,7 @@ namespace PokemonGBMP
             catch (Exception e)
             {
                 SocketTimer.Enabled = false;
-                MessageBox.Show("Connection Lost: ");
+                MessageBox.Show("Connection Lost: " + e.Message);
                 this.Close();
             }
         }
@@ -153,8 +151,8 @@ namespace PokemonGBMP
                     isReady = box.readyCheckBox.Checked;
                 }
 
-                SendSocket("X" + mainXPos + ";" + mainYPos + ";" + mainMapID + ";" + mainSpriteImageIndex + ";" + mainIsOnCombat + ";" + mainIsOnGrass + ";" + mainBadgets +
-                    ";" + mainMewtwo + ";" + mainArticuno + ";" + mainMoltres + ";" + mainZapdos + ";" + mFoughtGiovanni + ";" + mFoughtBrock + ";" + mFoughtMisty + ";" +
+                SendSocket("X" + mXPos + ";" + mYPos + ";" + mMapID + ";" + mSpriteImageIndex + ";" + mIsOnCombat + ";" + mIsOnGrass + ";" + mBadgets +
+                    ";" + mMewtwo + ";" + mArticuno + ";" + mMoltres + ";" + mZapdos + ";" + mFoughtGiovanni + ";" + mFoughtBrock + ";" + mFoughtMisty + ";" +
                     mFoughtSurge + ";" + mFoughtErika + ";" + mFoughtKoga + ";" + mFoughtBlaine + ";" + mFoughtSabrina + ";" + mFoughtFSnorlax + ";" + mFoughtSSnorlax + ";" + BitConverter.ToString(mPkdex) + "Y" + slctPkm + ";" + isReady);
             }
 

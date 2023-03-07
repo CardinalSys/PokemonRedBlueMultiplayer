@@ -23,23 +23,23 @@ namespace PokemonGBMP
         {
 
             //Main Player
-            mainPosText.Text = "Position: " + main.mainXPos + ";" + main.mainYPos;
+            mainPosText.Text = "Position: " + main.mXPos + ";" + main.mYPos;
 
-            mainSpriteIndexText.Text = "Sprite index: " + main.mainSpriteImageIndex;
+            mainSpriteIndexText.Text = "Sprite index: " + main.mSpriteImageIndex;
 
-            if(main.mainIsOnGrass == 0)
+            if(main.mIsOnGrass == 0)
                 mainOnGrassText.Text = "Is on grass: False";
             else
                 mainOnGrassText.Text = "Is on grass: True";
 
-            mainMapIdText.Text = "Current MapID: " + main.mainMapID;
+            mMapIDText.Text = "Current MapID: " + main.mMapID;
 
-            if (main.mainIsOnCombat == 0)
+            if (main.mIsOnCombat == 0)
                 mainOnCombatText.Text = "Is on combat: False";
             else
                 mainOnCombatText.Text = "Is on combat: True";
 
-            mainBadges.Text = "Badges: " + main.mainBadgets;
+            mainBadges.Text = "Badges: " + main.mBadgets;
 
             //Secondary Player
             sMapIdText.Text = "Current MapID: " + main.sMapId;

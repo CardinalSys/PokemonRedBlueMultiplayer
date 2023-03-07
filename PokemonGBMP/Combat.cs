@@ -50,18 +50,10 @@ namespace PokemonGBMP
             {
                 int pkm = main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x16B + (44 * i)).ToString("X"));
 
-                int atk1 = main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x173 + (44 * i)).ToString("X"));
-                if (atk1 < 0)
-                    atk1 = 0;
-                int atk2 = main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x174 + (44 * i)).ToString("X"));
-                if (atk2 < 0)
-                    atk2 = 0;
-                int atk3 = main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x175 + (44 * i)).ToString("X"));
-                if (atk3 < 0)
-                    atk3 = 0;
-                int atk4 = main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x176 + (44 * i)).ToString("X"));
-                if (atk4 < 0)
-                    atk4 = 0;
+                int atk1 = Math.Max(0, main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x173 + (44 * i)).ToString("X")));
+                int atk2 = Math.Max(0, main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x174 + (44 * i)).ToString("X")));
+                int atk3 = Math.Max(0, main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x175 + (44 * i)).ToString("X")));
+                int atk4 = Math.Max(0, main.mem.ReadByte("visualboyadvance-m.exe+039602E8," + (0x176 + (44 * i)).ToString("X")));
 
                 names[i] = pokemonList[pkm];
 

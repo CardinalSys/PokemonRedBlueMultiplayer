@@ -36,7 +36,7 @@ namespace PokemonGBMP
             this.updateInfoTimer = new System.Windows.Forms.Timer(this.components);
             this.mainSpriteIndexText = new System.Windows.Forms.Label();
             this.mainOnGrassText = new System.Windows.Forms.Label();
-            this.mainMapIdText = new System.Windows.Forms.Label();
+            this.mMapIDText = new System.Windows.Forms.Label();
             this.mainOnCombatText = new System.Windows.Forms.Label();
             this.PlayerTwoLabel = new System.Windows.Forms.Label();
             this.sPosText = new System.Windows.Forms.Label();
@@ -104,14 +104,14 @@ namespace PokemonGBMP
             this.mainOnGrassText.TabIndex = 5;
             this.mainOnGrassText.Text = "On Grass: ";
             // 
-            // mainMapIdText
+            // mMapIDText
             // 
-            this.mainMapIdText.AutoSize = true;
-            this.mainMapIdText.Location = new System.Drawing.Point(14, 115);
-            this.mainMapIdText.Name = "mainMapIdText";
-            this.mainMapIdText.Size = new System.Drawing.Size(82, 13);
-            this.mainMapIdText.TabIndex = 6;
-            this.mainMapIdText.Text = "Current MapID: ";
+            this.mMapIDText.AutoSize = true;
+            this.mMapIDText.Location = new System.Drawing.Point(14, 115);
+            this.mMapIDText.Name = "mMapIDText";
+            this.mMapIDText.Size = new System.Drawing.Size(82, 13);
+            this.mMapIDText.TabIndex = 6;
+            this.mMapIDText.Text = "Current MapID: ";
             // 
             // mainOnCombatText
             // 
@@ -249,7 +249,7 @@ namespace PokemonGBMP
             this.Controls.Add(this.sPosText);
             this.Controls.Add(this.PlayerTwoLabel);
             this.Controls.Add(this.mainOnCombatText);
-            this.Controls.Add(this.mainMapIdText);
+            this.Controls.Add(this.mMapIDText);
             this.Controls.Add(this.mainOnGrassText);
             this.Controls.Add(this.playerOneInfo);
             this.Controls.Add(this.debugInfoLabel);
@@ -270,7 +270,7 @@ namespace PokemonGBMP
         private System.Windows.Forms.Timer updateInfoTimer;
         private System.Windows.Forms.Label mainSpriteIndexText;
         private System.Windows.Forms.Label mainOnGrassText;
-        private System.Windows.Forms.Label mainMapIdText;
+        private System.Windows.Forms.Label mMapIDText;
         private System.Windows.Forms.Label mainOnCombatText;
         private System.Windows.Forms.Label PlayerTwoLabel;
         private System.Windows.Forms.Label sPosText;
