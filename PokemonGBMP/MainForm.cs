@@ -279,14 +279,18 @@ namespace PokemonGBMP
                 mem.WriteMemory("visualboyadvance-m.exe+039602E0,1F0", "byte", "0");
 
             //WriteFlags
-            if(mMewtwo == 1)
-                mem.WriteMemory("visualboyadvance-m.exe+039602E8,5C0" , "byte", "1");
-            if (mArticuno == 1)
-                mem.WriteMemory("visualboyadvance-m.exe+039602E8,782", "byte", "1");
-            if (mMoltres == 1)
-                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7EE", "byte", "1");
-            if (mZapdos == 1)
-                mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
+            if(!friendlyMode)
+            {
+                if (sMewtwo == 1)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E8,5C0", "byte", "1");
+                if (sArticuno == 1)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E8,782", "byte", "1");
+                if (sMoltres == 1)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E8,7EE", "byte", "1");
+                if (sZapdos == 1)
+                    mem.WriteMemory("visualboyadvance-m.exe+039602E8,7D4", "byte", "1");
+            }
+
 
             if (friendlyMode && !canChangeGameMode)
                 FriendlyMode();
